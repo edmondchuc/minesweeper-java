@@ -1,11 +1,11 @@
 /**
  * <h1>Minesweeper</h1>
- * This is a minesweeper game. It emphasises on the principles of software engineering and utilises many of the
+ * This is a minesweeper game. It emphasises on the principles of software engineering and utilises many of the aaaaaaaa
  * design principles to ensure robustness and modularity in the software architecture.
  *
  * @author Edmond Chuc
  * @version 2018-07-20
- * @link FSM source: http://gameprogrammingpatterns.com/state.html
+ * @link Class-based Finite State Machines source: http://gameprogrammingpatterns.com/state.html
  */
 
 package com.edmondchuc.minesweeper;
@@ -64,7 +64,7 @@ public class Main extends Application {
         // Setting the image view
 //        ImageView imageView = new ImageView(cellDefaultImage);
 
-        double length = 512/8;
+//        double length = 512/8;
         // Setting the position of the image
 //        imageView.setX(50);
 //        imageView.setY(25);
@@ -72,24 +72,28 @@ public class Main extends Application {
 //        imageView.setFitWidth(length);
 
         // draw the grid of cells
-        int boardSize = 8;
-        ImageView[][] cellViews = new ImageView[boardSize][boardSize];
+//        int boardSize = 8;
+//        ImageView[][] cellViews = new ImageView[boardSize][boardSize];
 
         // Creating a group object
         // add objects to the list so that they get rendered
         Group root = new Group();
         ObservableList list = root.getChildren();
 
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                cellViews[i][j] = new ImageView(cellDefaultImage);
-                cellViews[i][j].setX(length * j);
-                cellViews[i][j].setY(length * i + 128);
-                cellViews[i][j].setFitHeight(length);
-                cellViews[i][j].setFitWidth(length);
-                list.add(cellViews[i][j]);
-            }
-        }
+        BoardModel model = new BoardModel(8);
+        BoardView view = new BoardView(list, 8);
+        GameController gameController = new GameController(model, view);
+
+//        for(int i = 0; i < boardSize; i++) {
+//            for(int j = 0; j < boardSize; j++) {
+//                cellViews[i][j] = new ImageView(cellDefaultImage);
+//                cellViews[i][j].setX(length * j);
+//                cellViews[i][j].setY(length * i + 128);
+//                cellViews[i][j].setFitHeight(length);
+//                cellViews[i][j].setFitWidth(length);
+//                list.add(cellViews[i][j]);
+//            }
+//        }
 
         // Setting the fit height and width of the image view
 //        imageView.setFitHeight(455);
