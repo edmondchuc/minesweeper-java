@@ -14,9 +14,13 @@ public class CellView {
         imageView = new ImageView(cellDefault);
     }
 
-    public void setOnMouseEntered(GameController gameController) {
+    public void setEvents(GameController gameController) {
         imageView.setOnMouseEntered(event -> {
             gameController.onMouseEntered(this.i, this.j);
+        });
+
+        imageView.setOnMouseExited(event -> {
+            gameController.onMouseExited(this.i, this.j);
         });
     }
 

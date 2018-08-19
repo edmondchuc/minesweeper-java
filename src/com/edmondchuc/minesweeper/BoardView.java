@@ -49,7 +49,7 @@ public class BoardView {
     public void setEvents(GameController gameController) {
         for(int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                cells[i][j].setOnMouseEntered(gameController);
+                cells[i][j].setEvents(gameController);
             }
         }
     }

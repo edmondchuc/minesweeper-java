@@ -14,4 +14,9 @@ public class GameController {
         model.onMouseEntered(i, j);
         view.setView(i, j, model);
     }
+
+    public void onMouseExited(int i, int j) {
+        model.onMouseExited(i, j);
+        view.setView(i, j, model);
+    }
 }

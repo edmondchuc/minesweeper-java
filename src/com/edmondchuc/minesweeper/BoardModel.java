@@ -15,4 +15,8 @@ public class BoardModel {
     public void onMouseEntered(int i, int j) {
         cells[i][j].setStateHoverEnter();
     }
+
+    public void onMouseExited(int i, int j) {
+        cells[i][j].setStateHoverExit();
+    }
 }
