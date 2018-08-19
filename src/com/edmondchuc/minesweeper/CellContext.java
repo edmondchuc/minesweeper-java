@@ -8,13 +8,20 @@ public class CellContext {
      * The state of the cell.
      */
     private CellState cellState;
+    private boolean isBomb;
 
     /**
      * Constructor.
      */
-    public CellContext() {
+    public CellContext(boolean isBomb) {
         // cell creation defaults to its original state.
         this.cellState = new CellDefault();
+
+        this.isBomb = isBomb;
+    }
+
+    public boolean isBomb() {
+        return isBomb;
     }
 
     /**
@@ -54,5 +61,9 @@ public class CellContext {
      */
     public void setStateHoverExit() {
         this.cellState.setStateHoverExit(this);
+    }
+
+    public void setStateLeftClick() {
+        this.cellState.setStateLeftClick(this);
     }
 }

@@ -13,7 +13,8 @@ public class BoardView {
 
     Image cellDefault;
     Image cellHover;
-    Image cellDown;
+    Image cellDownEmpty;
+    Image cellDownBomb;
 
     CellView[][] cells;
 
@@ -23,7 +24,8 @@ public class BoardView {
 
         cellDefault = new Image(new FileInputStream("assets" + File.separator + "Cell.png"));
         cellHover = new Image(new FileInputStream("assets" + File.separator + "CellOver.png"));
-        cellDown = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
+        cellDownEmpty = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
+        cellDownBomb = new Image(new FileInputStream("assets" + File.separator + "ExplodedMineCell.png"));
 
         cells = new CellView[boardSize][boardSize];
 
@@ -61,14 +63,11 @@ public class BoardView {
         else if(model.cells[i][j].getState().getClass() == CellHover.class) {
             cells[i][j].imageView.setImage((cellHover));
         }
+        else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
+            cells[i][j].imageView.setImage(cellDownBomb);
+        }
+        else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
+            cells[i][j].imageView.setImage(cellDownEmpty);
+        }
     }
-
-//    public void setView(CellContext cell, ImageView view, Image cellDefaultImage, Image cellDownImage) {
-//        if(cell.getState().getClass() == CellDefault.class) {
-//            view.setImage(cellDefaultImage);
-//        }
-//        else if(cell.getState().getClass() == CellHover.class) {
-//            view.setImage((cellDownImage));
-//        }
-//    }
 }

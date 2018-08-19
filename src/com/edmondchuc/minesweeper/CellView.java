@@ -22,6 +22,10 @@ public class CellView {
         imageView.setOnMouseExited(event -> {
             gameController.onMouseExited(this.i, this.j);
         });
+
+        imageView.setOnMousePressed(event -> {
+            gameController.onMouseLeftClicked(this.i, this.j);
+        });
     }
 
     public int getJ() {

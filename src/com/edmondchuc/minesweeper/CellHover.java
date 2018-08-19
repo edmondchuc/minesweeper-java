@@ -34,4 +34,29 @@ public class CellHover implements CellState {
     public void setStateHoverExit(CellContext cellContext) {
         cellContext.setState(previousState);
     }
+
+    @Override
+    public void setStateLeftClick(CellContext cellContext) {
+        if(cellContext.isBomb()) {
+            cellContext.setState(new CellRevealedBomb());
+        }
+        else if(!cellContext.isBomb()) {
+            cellContext.setState(new CellRevealedEmpty());
+        }
+        else {
+
+        }
+    }
+
+    @Override
+    public void setStateRevealedEmpty(CellContext cellContext) {
+
+    }
+
+    @Override
+    public void setStateRevealedBomb(CellContext cellContext) {
+
+    }
+
+
 }

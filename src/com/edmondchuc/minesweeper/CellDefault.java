@@ -21,4 +21,19 @@ public class CellDefault implements CellState {
     public void setStateHoverExit(CellContext cellContext) {
 
     }
+
+    @Override
+    public void setStateLeftClick(CellContext cellContext) {
+
+    }
+
+    @Override
+    public void setStateRevealedEmpty(CellContext cellContext) {
+
+    }
+
+    @Override
+    public void setStateRevealedBomb(CellContext cellContext) {
+
+    }
 }
