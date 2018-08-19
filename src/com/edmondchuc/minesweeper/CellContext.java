@@ -1,5 +1,7 @@
 package com.edmondchuc.minesweeper;
 
+import java.util.List;
+
 /**
  * This is the cell context class. It models the functionality of a cell in a class-based finite state machine pattern.
  */
@@ -9,15 +11,17 @@ public class CellContext {
      */
     private CellState cellState;
     private boolean isBomb;
+    private List neighbours;
 
-    /**
-     * Constructor.
-     */
     public CellContext(boolean isBomb) {
         // cell creation defaults to its original state.
         this.cellState = new CellDefault();
 
         this.isBomb = isBomb;
+    }
+
+    public void setNeighbours(List neighbours) {
+        this.neighbours = neighbours;
     }
 
     public boolean isBomb() {

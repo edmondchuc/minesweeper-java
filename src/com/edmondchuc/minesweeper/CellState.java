@@ -2,6 +2,7 @@ package com.edmondchuc.minesweeper;
 
 /**
  * CellState interface should be implemented by any classes that represent a cell state.
+ * TODO: Refactor CellState into CellBehaviour interfaces so that each CellState only needs to implement its required methods.
  */
 public interface CellState {
     /**
