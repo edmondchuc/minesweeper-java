@@ -16,16 +16,29 @@ public class BoardView {
     Image cellDownEmpty;
     Image cellDownBomb;
 
+    Image cellOne;
+    Image cellTwo;
+    Image cellThree;
+    Image cellFour;
+    Image cellFive;
+    Image cellSix;
+    Image cellSeven;
+    Image cellEight;
+
     CellView[][] cells;
 
     int boardSize;
 
     public BoardView(ObservableList list, int boardSize) throws FileNotFoundException {
 
-        cellDefault = new Image(new FileInputStream("assets" + File.separator + "Cell.png"));
-        cellHover = new Image(new FileInputStream("assets" + File.separator + "CellOver.png"));
-        cellDownEmpty = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
-        cellDownBomb = new Image(new FileInputStream("assets" + File.separator + "ExplodedMineCell.png"));
+        String dirPath = "assets" + File.separator + "original" + File.separator;
+
+        cellDefault = new Image(new FileInputStream( dirPath + "cell-default.png"));
+        cellHover = new Image(new FileInputStream(dirPath + "cell-hover.png"));
+        cellDownEmpty = new Image(new FileInputStream(dirPath + "cell-down.png"));
+        cellDownBomb = new Image(new FileInputStream(dirPath + "cell-bomb-hit.png"));
+
+
 
         cells = new CellView[boardSize][boardSize];
 
@@ -46,6 +59,14 @@ public class BoardView {
                 list.add(cells[i][j].imageView);
             }
         }
+
+//        Image test = new Image(new FileInputStream("assets" + File.separator + "original" + File.separator + "cell-bomb-hit.png"));
+//        ImageView viewTest = new ImageView(test);
+//        viewTest.setX(200);
+//        viewTest.setY(200);
+//        viewTest.setFitHeight(length);
+//        viewTest.setFitWidth(length);
+//        list.add(viewTest);
     }
 
     public void setEvents(GameController gameController) {
@@ -56,18 +77,22 @@ public class BoardView {
         }
     }
 
-    public void setView(int i, int j, BoardModel model) {
-        if(model.cells[i][j].getState().getClass() == CellDefault.class) {
-            cells[i][j].imageView.setImage(cellDefault);
-        }
-        else if(model.cells[i][j].getState().getClass() == CellHover.class) {
-            cells[i][j].imageView.setImage((cellHover));
-        }
-        else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
-            cells[i][j].imageView.setImage(cellDownBomb);
-        }
-        else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
-            cells[i][j].imageView.setImage(cellDownEmpty);
+    public void setView(BoardModel model) {
+        for(int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                if(model.cells[i][j].getState().getClass() == CellDefault.class) {
+                    cells[i][j].imageView.setImage(cellDefault);
+                }
+                else if(model.cells[i][j].getState().getClass() == CellHover.class) {
+                    cells[i][j].imageView.setImage((cellHover));
+                }
+                else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
+                    cells[i][j].imageView.setImage(cellDownBomb);
+                }
+                else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
+                    cells[i][j].imageView.setImage(cellDownEmpty);
+                }
+            }
         }
     }
 }

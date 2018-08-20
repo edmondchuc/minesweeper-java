@@ -11,7 +11,7 @@ public class CellContext {
      */
     private CellState cellState;
     private boolean isBomb;
-    private List neighbours;
+    private List<CellContext> neighbours;
 
     public CellContext(boolean isBomb) {
         // cell creation defaults to its original state.
@@ -22,6 +22,10 @@ public class CellContext {
 
     public void setNeighbours(List neighbours) {
         this.neighbours = neighbours;
+    }
+
+    public List<CellContext> getNeighbours() {
+        return neighbours;
     }
 
     public boolean isBomb() {
@@ -69,5 +73,23 @@ public class CellContext {
 
     public void setStateLeftClick() {
         this.cellState.setStateLeftClick(this);
+    }
+
+    public void revealNeighbours() {
+        for (CellContext neighbour : neighbours) {
+            if(neighbour.getState().getClass() != CellRevealedEmpty.class) {
+                boolean hasBomb = false; // check for bombs in its adjacent neighbours
+                for (CellContext n : neighbour.neighbours) {
+                    if(n.isBomb()) {
+                        hasBomb = true;
+                        break;
+                    }
+                }
+                if(hasBomb == false) {
+                    neighbour.setState(new CellRevealedEmpty());
+                    neighbour.revealNeighbours();
+                }
+            }
+        }
     }
 }

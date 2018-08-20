@@ -42,6 +42,16 @@ public class CellHover implements CellState {
         }
         else if(!cellContext.isBomb()) {
             cellContext.setState(new CellRevealedEmpty());
+            boolean hasBomb = false;
+            for (CellContext neighbour: cellContext.getNeighbours()) {
+                if(neighbour.isBomb()) {
+                    hasBomb = true;
+                    break;
+                }
+            }
+            if(hasBomb == false) {
+                cellContext.revealNeighbours();
+            }
         }
         else {
 

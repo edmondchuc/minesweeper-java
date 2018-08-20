@@ -1,12 +1,20 @@
 package com.edmondchuc.minesweeper;
 
+import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
-public class CellView {
+import java.io.File;
+
+public class CellView extends StackPane{
     private int i;
     private int j;
     public ImageView imageView;
+    private Text text = new Text();
 
     public CellView(int i, int j, Image cellDefault) {
         this.i = i;
