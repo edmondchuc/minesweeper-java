@@ -77,7 +77,7 @@ public class CellContext {
 
     public void revealNeighbours() {
         for (CellContext neighbour : neighbours) {
-            if(neighbour.getState().getClass() != CellRevealedEmpty.class) {
+            if(neighbour.getState().getClass() != CellRevealedEmpty.class && neighbour.getState().getClass() != CellRevealedBomb.class) {
                 boolean hasBomb = false; // check for bombs in its adjacent neighbours
                 for (CellContext n : neighbour.neighbours) {
                     if(n.isBomb()) {
@@ -85,8 +85,8 @@ public class CellContext {
                         break;
                     }
                 }
+                neighbour.setState(new CellRevealedEmpty());
                 if(hasBomb == false) {
-                    neighbour.setState(new CellRevealedEmpty());
                     neighbour.revealNeighbours();
                 }
             }

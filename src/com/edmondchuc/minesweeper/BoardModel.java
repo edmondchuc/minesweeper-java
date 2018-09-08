@@ -26,16 +26,28 @@ public class BoardModel {
                 if(!cells[i][j].isBomb()) {
                     List neighbours = new ArrayList();
                     if(i > 0) {
-                        neighbours.add(cells[i-1][j]);
+                        neighbours.add(cells[i-1][j]); // top
+                        if(j > 0) {
+                            neighbours.add(cells[i-1][j-1]); // top-left
+                        }
+                        if(j < boardSize-1) {
+                            neighbours.add(cells[i-1][j+1]); // top-right
+                        }
                     }
                     if(j < boardSize-1) {
-                        neighbours.add(cells[i][j+1]);
+                        neighbours.add(cells[i][j+1]); // right
                     }
                     if(i < boardSize-1) {
-                        neighbours.add(cells[i+1][j]);
+                        neighbours.add(cells[i+1][j]); // bottom
+                        if(j > 0) {
+                            neighbours.add(cells[i+1][j-1]); // bottom-left
+                        }
+                        if(j < boardSize-1) {
+                            neighbours.add(cells[i+1][j+1]); // bottom-right
+                        }
                     }
                     if(j > 0) {
-                        neighbours.add(cells[i][j-1]);
+                        neighbours.add(cells[i][j-1]); // left
                     }
 
                     cells[i][j].setNeighbours(neighbours);
