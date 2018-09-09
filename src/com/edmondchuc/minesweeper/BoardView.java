@@ -3,6 +3,8 @@ package com.edmondchuc.minesweeper;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -31,12 +33,16 @@ public class BoardView {
 
     public BoardView(ObservableList list, int boardSize) throws FileNotFoundException {
 
-        String dirPath = "assets" + File.separator + "original" + File.separator;
-
-        cellDefault = new Image(new FileInputStream( dirPath + "cell-default.png"));
-        cellHover = new Image(new FileInputStream(dirPath + "cell-hover.png"));
-        cellDownEmpty = new Image(new FileInputStream(dirPath + "cell-down.png"));
-        cellDownBomb = new Image(new FileInputStream(dirPath + "cell-bomb-hit.png"));
+//        String dirPath = "assets" + File.separator + "original" + File.separator;
+        String dirPath = "assets" + File.separator;
+//        cellDefault = new Image(new FileInputStream( dirPath + "cell-default.png"));
+//        cellHover = new Image(new FileInputStream(dirPath + "cell-hover.png"));
+//        cellDownEmpty = new Image(new FileInputStream(dirPath + "cell-down.png"));
+//        cellDownBomb = new Image(new FileInputStream(dirPath + "cell-bomb-hit.png"));
+        cellDefault = new Image(new FileInputStream( dirPath + "Cell.png"));
+        cellHover = new Image(new FileInputStream(dirPath + "CellOver.png"));
+        cellDownEmpty = new Image(new FileInputStream(dirPath + "CellDown.png"));
+        cellDownBomb = new Image(new FileInputStream(dirPath + "ExplodedMineCell.png"));
 
 
 
@@ -51,12 +57,14 @@ public class BoardView {
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize; j++) {
                 // cell view
-                cells[i][j] = new CellView(i, j, cellDefault);
+                cells[i][j] = new CellView(i, j, cellDefault, length);
                 cells[i][j].imageView.setX(length * j);
                 cells[i][j].imageView.setY(length * i + 128);
                 cells[i][j].imageView.setFitHeight(length);
                 cells[i][j].imageView.setFitWidth(length);
                 list.add(cells[i][j].imageView);
+
+                list.add(cells[i][j].text);
             }
         }
 
@@ -67,6 +75,8 @@ public class BoardView {
 //        viewTest.setFitHeight(length);
 //        viewTest.setFitWidth(length);
 //        list.add(viewTest);
+
+
     }
 
     public void setEvents(GameController gameController) {

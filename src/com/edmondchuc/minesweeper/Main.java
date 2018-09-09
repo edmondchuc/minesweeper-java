@@ -15,8 +15,12 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -132,6 +136,27 @@ public class Main extends Application {
 //        });
 
 
+        // construct the menu bar
+        MenuBar menuBar = new MenuBar();
+
+        // root menu
+        Menu menu = new Menu("Game Mode");
+        menuBar.getMenus().add(menu);
+
+        // easy
+        MenuItem menuEasyMode = new MenuItem("Easy");
+        menu.getItems().add(menuEasyMode);
+
+        // medium
+        MenuItem menuMediumMode = new MenuItem("Medium");
+        menu.getItems().add(menuMediumMode);
+
+        // hard
+        MenuItem menuHardMode = new MenuItem("Hard");
+        menu.getItems().add(menuHardMode);
+
+        // add it to view
+        list.add(menuBar);
 
         // Creating a scene object
         Scene scene = new Scene(root, 512, 640);
@@ -147,6 +172,7 @@ public class Main extends Application {
 
         // Disable window resize
         primaryStage.setResizable(false);
+
 
 
     }
