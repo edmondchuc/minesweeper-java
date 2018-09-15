@@ -25,7 +25,13 @@ public class CellView extends StackPane{
         // text for the neighbouring bombs
         text = new Text(length * j + 20, length * i + 170, "3");
         text.setFont(new Font(20));
-        text.setText("10");
+        text.setText("");
+    }
+
+    public void setBombText(int bombs) {
+        if(bombs != 0) {
+            text.setText(Integer.toString(bombs));
+        }
     }
 
     public void setEvents(GameController gameController) {

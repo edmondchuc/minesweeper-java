@@ -12,6 +12,7 @@ public class CellContext {
     private CellState cellState;
     private boolean isBomb;
     private List<CellContext> neighbours;
+    private int neighboursIsBomb = 0;
 
     public CellContext(boolean isBomb) {
         // cell creation defaults to its original state.
@@ -20,8 +21,21 @@ public class CellContext {
         this.isBomb = isBomb;
     }
 
+    public int getNumOfNeighboursIsBomb() {
+        return neighboursIsBomb;
+    }
+
     public void setNeighbours(List neighbours) {
         this.neighbours = neighbours;
+
+        // find the number of neighbours who are bombs
+        if(!this.isBomb) {
+            for(CellContext neighbour : this.neighbours) {
+                if(neighbour.isBomb()) {
+                    neighboursIsBomb++;
+                }
+            }
+        }
     }
 
     public List<CellContext> getNeighbours() {

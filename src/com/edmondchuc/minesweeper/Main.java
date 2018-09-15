@@ -15,12 +15,12 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -56,6 +56,53 @@ public class Main extends Application {
         }
     }
 
+    public void createGameModeMenu(ObservableList list, int screenWidth, int screenHeight) {
+        // select game mode
+        MenuBar gameModeMenuBar = new MenuBar();
+        gameModeMenuBar.setPrefSize(170, 30);
+        gameModeMenuBar.setLayoutX(screenWidth/2 - 170/2);
+        gameModeMenuBar.setLayoutY(20);
+        Menu gameModeMenu = new Menu("Select game mode...");
+        gameModeMenuBar.getMenus().add(gameModeMenu);
+        RadioMenuItem radioMenuEasy = new RadioMenuItem("Easy");
+        RadioMenuItem radioMenuMedium = new RadioMenuItem("Medium");
+        RadioMenuItem radioMenuHard = new RadioMenuItem("Hard");
+        ToggleGroup toggleGroupGameMode = new ToggleGroup();
+        toggleGroupGameMode.getToggles().add(radioMenuEasy);
+        toggleGroupGameMode.getToggles().add(radioMenuMedium);
+        toggleGroupGameMode.getToggles().add(radioMenuHard);
+        toggleGroupGameMode.selectToggle(radioMenuEasy);
+        gameModeMenu.getItems().add(radioMenuEasy);
+        gameModeMenu.getItems().add(radioMenuMedium);
+        gameModeMenu.getItems().add(radioMenuHard);
+
+        Text text = new Text(screenWidth/ 2, 75 ,"Easy");
+        text.prefWidth(100);
+        text.setLayoutX(-text.getLayoutBounds().getWidth());
+        text.setFont(new Font(20));
+//        text.setText("");
+        gameModeMenu.setOnAction(value -> {
+            RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
+            text.setText(selected.getText());
+        });
+
+        list.add(gameModeMenuBar);
+        list.add(text);
+
+        // start button
+        Button startGame = new Button("Start game");
+        startGame.setPrefSize(100, 30);
+        startGame.setLayoutX(screenWidth/2 - 100/2);
+        startGame.setLayoutY(screenHeight - 80);
+        startGame.setOnAction(value -> {
+            //TODO: hook it up to start the game
+            RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
+            System.out.println("Starting game with difficulty: " + selected.getText());
+
+        });
+        list.add(startGame);
+    }
+
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
         // Creating an image
@@ -65,101 +112,53 @@ public class Main extends Application {
 
         Image cellDownImage = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
 
-        // Setting the image view
-//        ImageView imageView = new ImageView(cellDefaultImage);
+        // screen size
+        int screenWidth = 300; // 512 for the default game
+        int screenHeight = 300;// 540
 
-//        double length = 512/8;
-        // Setting the position of the image
-//        imageView.setX(50);
-//        imageView.setY(25);
-//        imageView.setFitHeight(length);
-//        imageView.setFitWidth(length);
-
-        // draw the grid of cells
-//        int boardSize = 8;
-//        ImageView[][] cellViews = new ImageView[boardSize][boardSize];
 
         // Creating a group object
         // add objects to the list so that they get rendered
         Group root = new Group();
         ObservableList list = root.getChildren();
 
-        BoardModel model = new BoardModel(8);
-        BoardView view = new BoardView(list, 8);
-        GameController gameController = new GameController(model, view);
+        // select game mode
+        createGameModeMenu(list, screenWidth, screenHeight);
 
-//        for(int i = 0; i < boardSize; i++) {
-//            for(int j = 0; j < boardSize; j++) {
-//                cellViews[i][j] = new ImageView(cellDefaultImage);
-//                cellViews[i][j].setX(length * j);
-//                cellViews[i][j].setY(length * i + 128);
-//                cellViews[i][j].setFitHeight(length);
-//                cellViews[i][j].setFitWidth(length);
-//                list.add(cellViews[i][j]);
-//            }
-//        }
-
-        // Setting the fit height and width of the image view
-//        imageView.setFitHeight(455);
-//        imageView.setFitWidth(500);
-
-//        // Setting the preserve ratio of the image view
-//        imageView.setPreserveRatio(true);
-//
-//        // MY CODE
-//        CellContext cell = new CellContext();
-//
-//        imageView.setOnMouseEntered(event -> {
-//            cell.setStateHoverEnter();
-//            setView(cell, imageView, cellDefaultImage, cellDownImage);
-//        });
-//
-//        imageView.setOnMouseExited(event -> {
-//            cell.setStateHoverExit();
-//            setView(cell, imageView, cellDefaultImage, cellDownImage);
-//        });
-//
-//        imageView.setOnMouseReleased(event -> {
-////            System.out.println("Mouse released on image");
-//        });
+        // select difficulty
 
 
 
-//        imageView.setOnMousePressed(event -> {
-////            System.out.println("Mouse pressed on image");
-////            if(imageView.getImage() == cellDefaultImage) {
-////                imageView.setImage(cellDownImage);
-////            }
-////            else {
-////                imageView.setImage(cellDefaultImage);
-////            }
-//        });
+//        BoardModel model = new BoardModel(8);
+//        BoardView view = new BoardView(list, 8);
+//        GameController gameController = new GameController(model, view);
+
 
 
         // construct the menu bar
-        MenuBar menuBar = new MenuBar();
-
-        // root menu
-        Menu menu = new Menu("Game Mode");
-        menuBar.getMenus().add(menu);
-
-        // easy
-        MenuItem menuEasyMode = new MenuItem("Easy");
-        menu.getItems().add(menuEasyMode);
-
-        // medium
-        MenuItem menuMediumMode = new MenuItem("Medium");
-        menu.getItems().add(menuMediumMode);
-
-        // hard
-        MenuItem menuHardMode = new MenuItem("Hard");
-        menu.getItems().add(menuHardMode);
-
-        // add it to view
-        list.add(menuBar);
+//        MenuBar menuBar = new MenuBar();
+//
+//        // root menu
+//        Menu menu = new Menu("Game Mode");
+//        menuBar.getMenus().add(menu);
+//
+//        // easy
+//        MenuItem menuEasyMode = new MenuItem("Easy");
+//        menu.getItems().add(menuEasyMode);
+//
+//        // medium
+//        MenuItem menuMediumMode = new MenuItem("Medium");
+//        menu.getItems().add(menuMediumMode);
+//
+//        // hard
+//        MenuItem menuHardMode = new MenuItem("Hard");
+//        menu.getItems().add(menuHardMode);
+//
+//        // add it to view
+//        list.add(menuBar);
 
         // Creating a scene object
-        Scene scene = new Scene(root, 512, 640);
+        Scene scene = new Scene(root, screenWidth, screenHeight);
 
         // Setting title to the stage
         primaryStage.setTitle("Minesweeper by Edmond Chuc");

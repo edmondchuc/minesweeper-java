@@ -101,6 +101,7 @@ public class BoardView {
                 }
                 else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
                     cells[i][j].imageView.setImage(cellDownEmpty);
+                    cells[i][j].setBombText(model.cells[i][j].getNumOfNeighboursIsBomb());
                 }
             }
         }
