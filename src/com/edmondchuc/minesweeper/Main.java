@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -113,8 +114,8 @@ public class Main extends Application {
         Image cellDownImage = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
 
         // screen size
-        int screenWidth = 300; // 512 for the default game
-        int screenHeight = 300;// 540
+        int screenWidth = 512; // 512 for the default game
+        int screenHeight = 640;// 640
 
 
         // Creating a group object
@@ -123,17 +124,22 @@ public class Main extends Application {
         ObservableList list = root.getChildren();
 
         // select game mode
-        createGameModeMenu(list, screenWidth, screenHeight);
+//        createGameModeMenu(list, screenWidth, screenHeight);
 
         // select difficulty
 
 
 
-//        BoardModel model = new BoardModel(8);
-//        BoardView view = new BoardView(list, 8);
-//        GameController gameController = new GameController(model, view);
+        BoardModel model = new BoardModel(8);
+        BoardView view = new BoardView(list, 8);
+        GameController gameController = new GameController(model, view);
 
-
+        // draw rectangle for test
+//        Rectangle rect = new Rectangle(100, 250, 100, 100);
+//        list.add(rect);
+//        rect.setOnMouseClicked(value -> {
+//            System.out.println("clicked black box");
+//        });
 
         // construct the menu bar
 //        MenuBar menuBar = new MenuBar();

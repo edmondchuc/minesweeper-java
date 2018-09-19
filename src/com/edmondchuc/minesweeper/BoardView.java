@@ -3,6 +3,8 @@ package com.edmondchuc.minesweeper;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -58,11 +60,14 @@ public class BoardView {
             for(int j = 0; j < boardSize; j++) {
                 // cell view
                 cells[i][j] = new CellView(i, j, cellDefault, length);
-                cells[i][j].imageView.setX(length * j);
-                cells[i][j].imageView.setY(length * i + 128);
-                cells[i][j].imageView.setFitHeight(length);
-                cells[i][j].imageView.setFitWidth(length);
-                list.add(cells[i][j].imageView);
+                cells[i][j].setX(length * j);
+                cells[i][j].setY(length * i + 128);
+                cells[i][j].setHeight(length);
+                cells[i][j].setWidth(length);
+                cells[i][j].setStroke(Color.GREENYELLOW);
+//                cells[i][j].imageView.setFitHeight(length);
+//                cells[i][j].imageView.setFitWidth(length);
+                list.add(cells[i][j]);
 
                 list.add(cells[i][j].text);
             }
@@ -91,16 +96,16 @@ public class BoardView {
         for(int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if(model.cells[i][j].getState().getClass() == CellDefault.class) {
-                    cells[i][j].imageView.setImage(cellDefault);
+                    cells[i][j].setFill(Color.BLUE); //.imageView.setImage(cellDefault);
                 }
                 else if(model.cells[i][j].getState().getClass() == CellHover.class) {
-                    cells[i][j].imageView.setImage((cellHover));
+                    cells[i][j].setFill(Color.GREEN); //imageView.setImage((cellHover));
                 }
                 else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
-                    cells[i][j].imageView.setImage(cellDownBomb);
+                    cells[i][j].setFill(Color.RED); //imageView.setImage(cellDownBomb);
                 }
                 else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
-                    cells[i][j].imageView.setImage(cellDownEmpty);
+                    cells[i][j].setFill(Color.LIGHTBLUE); //imageView.setImage(cellDownEmpty);
                     cells[i][j].setBombText(model.cells[i][j].getNumOfNeighboursIsBomb());
                 }
             }
