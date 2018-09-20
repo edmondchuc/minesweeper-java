@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -15,19 +16,24 @@ import java.io.FileNotFoundException;
 
 public class BoardView {
 
-    Image cellDefault;
-    Image cellHover;
-    Image cellDownEmpty;
-    Image cellDownBomb;
+//    Image cellDefault;
+//    Image cellHover;
+//    Image cellDownEmpty;
+//    Image cellDownBomb;
+//
+//    Image cellOne;
+//    Image cellTwo;
+//    Image cellThree;
+//    Image cellFour;
+//    Image cellFive;
+//    Image cellSix;
+//    Image cellSeven;
+//    Image cellEight;
 
-    Image cellOne;
-    Image cellTwo;
-    Image cellThree;
-    Image cellFour;
-    Image cellFive;
-    Image cellSix;
-    Image cellSeven;
-    Image cellEight;
+    Paint cellDefault = Color.LIGHTBLUE;
+    Paint cellHover = Color.GREENYELLOW;
+    Paint cellDownEmpty = Color.ALICEBLUE;
+    Paint cellDownBomb = Color.RED;
 
     CellView[][] cells;
 
@@ -41,10 +47,10 @@ public class BoardView {
 //        cellHover = new Image(new FileInputStream(dirPath + "cell-hover.png"));
 //        cellDownEmpty = new Image(new FileInputStream(dirPath + "cell-down.png"));
 //        cellDownBomb = new Image(new FileInputStream(dirPath + "cell-bomb-hit.png"));
-        cellDefault = new Image(new FileInputStream( dirPath + "Cell.png"));
-        cellHover = new Image(new FileInputStream(dirPath + "CellOver.png"));
-        cellDownEmpty = new Image(new FileInputStream(dirPath + "CellDown.png"));
-        cellDownBomb = new Image(new FileInputStream(dirPath + "ExplodedMineCell.png"));
+//        cellDefault = new Image(new FileInputStream( dirPath + "Cell.png"));
+//        cellHover = new Image(new FileInputStream(dirPath + "CellOver.png"));
+//        cellDownEmpty = new Image(new FileInputStream(dirPath + "CellDown.png"));
+//        cellDownBomb = new Image(new FileInputStream(dirPath + "ExplodedMineCell.png"));
 
 
 
@@ -59,12 +65,13 @@ public class BoardView {
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize; j++) {
                 // cell view
-                cells[i][j] = new CellView(i, j, cellDefault, length);
+                cells[i][j] = new CellView(i, j, length);
                 cells[i][j].setX(length * j);
                 cells[i][j].setY(length * i + 128);
                 cells[i][j].setHeight(length);
                 cells[i][j].setWidth(length);
                 cells[i][j].setStroke(Color.GREENYELLOW);
+                cells[i][j].setFill(cellDefault);
 //                cells[i][j].imageView.setFitHeight(length);
 //                cells[i][j].imageView.setFitWidth(length);
                 list.add(cells[i][j]);
@@ -96,16 +103,16 @@ public class BoardView {
         for(int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if(model.cells[i][j].getState().getClass() == CellDefault.class) {
-                    cells[i][j].setFill(Color.BLUE); //.imageView.setImage(cellDefault);
+                    cells[i][j].setFill(cellDefault); //.imageView.setImage(cellDefault);
                 }
                 else if(model.cells[i][j].getState().getClass() == CellHover.class) {
-                    cells[i][j].setFill(Color.GREEN); //imageView.setImage((cellHover));
+                    cells[i][j].setFill(cellHover); //imageView.setImage((cellHover));
                 }
                 else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
-                    cells[i][j].setFill(Color.RED); //imageView.setImage(cellDownBomb);
+                    cells[i][j].setFill(cellDownBomb); //imageView.setImage(cellDownBomb);
                 }
                 else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
-                    cells[i][j].setFill(Color.LIGHTBLUE); //imageView.setImage(cellDownEmpty);
+                    cells[i][j].setFill(cellDownEmpty); //imageView.setImage(cellDownEmpty);
                     cells[i][j].setBombText(model.cells[i][j].getNumOfNeighboursIsBomb());
                 }
             }

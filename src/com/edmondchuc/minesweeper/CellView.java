@@ -14,7 +14,7 @@ public class CellView extends Rectangle {
 //    public ImageView imageView;
     public Text text;
 
-    public CellView(int i, int j, Image cellDefault, double length) {
+    public CellView(int i, int j, double length) {
         this.i = i;
         this.j = j;
 //        imageView = new ImageView(cellDefault);
