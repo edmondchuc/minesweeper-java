@@ -1,16 +1,16 @@
 package com.edmondchuc.minesweeper;
 
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.File;
 
-public class CellView extends Rectangle {
-    private int i;
-//    public ImageView imageView;
-    public Text text;
+public class CellView extends Polygon {
+    protected int i;
+    protected Text text;
 
     public CellView(int i, int col, int row, double length) {
         this.i = i;
@@ -20,6 +20,10 @@ public class CellView extends Rectangle {
         text = new Text(length * col + 27, length * row + 164, "3");
         text.setFont(new Font(20));
         text.setText("");
+    }
+
+    public Text getText() {
+        return text;
     }
 
     public void setBombText(int bombs) {

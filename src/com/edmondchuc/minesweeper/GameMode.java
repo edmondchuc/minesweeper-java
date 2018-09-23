@@ -110,24 +110,43 @@ public class GameMode {
             ObservableList newList = modes.getChildren();
 
             //TODO: add hex and color game mode
-            if(selectedDifficulty.getText() == "Easy") {
-                BoardModel model = new BoardModel(8);
-                BoardView view = new BoardView(newList, 8, primaryStage);
-                GameController gameController = new GameController(model, view);
+            if(selectedGameMode.getText() == "Classic") {
+                if(selectedDifficulty.getText() == "Easy") {
+                    BoardModel model = new BoardModel(8);
+                    ClassicBoardView view = new ClassicBoardView(newList, 8, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
+                else if(selectedDifficulty.getText() == "Medium") {
+                    BoardModel model = new BoardModel(12);
+                    ClassicBoardView view = new ClassicBoardView(newList, 12, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
+                else if(selectedDifficulty.getText() == "Hard") {
+                    BoardModel model = new BoardModel(16);
+                    ClassicBoardView view = new ClassicBoardView(newList, 16, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
             }
-            else if(selectedDifficulty.getText() == "Medium") {
-                BoardModel model = new BoardModel(12);
-                BoardView view = new BoardView(newList, 12, primaryStage);
-                GameController gameController = new GameController(model, view);
+            else if(selectedGameMode.getText() == "Hex") {
+                if(selectedDifficulty.getText() == "Easy") {
+                    BoardModel model = new BoardModel(8);
+                    HexBoardView view = new HexBoardView(newList, 8, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
+                else if(selectedDifficulty.getText() == "Medium") {
+                    BoardModel model = new BoardModel(12);
+                    HexBoardView view = new HexBoardView(newList, 12, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
+                else if(selectedDifficulty.getText() == "Hard") {
+                    BoardModel model = new BoardModel(16);
+                    HexBoardView view = new HexBoardView(newList, 16, primaryStage);
+                    GameController gameController = new GameController(model, view);
+                }
             }
-            else if(selectedDifficulty.getText() == "Hard") {
-                BoardModel model = new BoardModel(16);
-                BoardView view = new BoardView(newList, 16, primaryStage);
-                GameController gameController = new GameController(model, view);
 
-            }
 
-            Scene game = new Scene(modes);
+            Scene game = new Scene(modes, 700, 700);
             primaryStage.setScene(game);
 
 

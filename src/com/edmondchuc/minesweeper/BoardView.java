@@ -44,32 +44,9 @@ public class BoardView {
         cells = new CellView[n];
 
         // size of cell image length in pixels
-        double length = 40;//sizeOfCell/boardSize;
 
-        int col = 0;
-        int row = 0;
-        for(int i = 0; i < n; i++) {
 
-            // cell view
-            cells[i] = new CellView(i, col, row, length);
-            cells[i].setX(length * col);
-            cells[i].setY(length * row + 128);
-            cells[i].setHeight(length);
-            cells[i].setWidth(length);
-            cells[i].setStroke(Color.DARKSLATEBLUE);
-            cells[i].setFill(cellDefault);
-//                cells[i][j].imageView.setFitHeight(length);
-//                cells[i][j].imageView.setFitWidth(length);
-            list.add(cells[i]);
 
-            list.add(cells[i].text);
-
-            col++;
-            if(col >= boardSize) {
-                row++;
-                col = 0;
-            }
-        }
 
 
         // main menu button
@@ -109,7 +86,6 @@ public class BoardView {
         if(model.isGameOver()) {
             this.gameOver = true;
             if(this.gameOver) {
-                System.out.println("hi");
                 Stage dialog = new Stage();
                 dialog.initOwner(primaryStage);
                 dialog.initModality(Modality.WINDOW_MODAL);
