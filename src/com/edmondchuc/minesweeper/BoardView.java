@@ -1,14 +1,18 @@
 package com.edmondchuc.minesweeper;
 
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -26,8 +30,14 @@ public class BoardView {
 
     int boardSize;
     int n; // size of list of cells
+    Stage primaryStage;
+
+    static boolean gameOver;
 
     public BoardView(ObservableList list, int boardSize, Stage primaryStage) {
+        this.gameOver = false;
+
+        this.primaryStage = primaryStage;
 
         this.boardSize = boardSize;
         this.n = boardSize*boardSize;
@@ -46,7 +56,7 @@ public class BoardView {
             cells[i].setY(length * row + 128);
             cells[i].setHeight(length);
             cells[i].setWidth(length);
-            cells[i].setStroke(Color.GREENYELLOW);
+            cells[i].setStroke(Color.DARKSLATEBLUE);
             cells[i].setFill(cellDefault);
 //                cells[i][j].imageView.setFitHeight(length);
 //                cells[i][j].imageView.setFitWidth(length);
@@ -78,6 +88,7 @@ public class BoardView {
     }
 
     public void setView(BoardModel model) {
+
         for(int i = 0; i < n; i++) {
             if(model.cells[i].getState().getClass() == CellDefault.class) {
                 cells[i].setFill(cellDefault); //.imageView.setImage(cellDefault);
@@ -91,6 +102,23 @@ public class BoardView {
             else if(model.cells[i].getState().getClass() == CellRevealedEmpty.class) {
                 cells[i].setFill(cellDownEmpty); //imageView.setImage(cellDownEmpty);
                 cells[i].setBombText(model.cells[i].getNumOfNeighboursIsBomb());
+            }
+        }
+
+        // if game lose, show popup to notify user
+        if(model.isGameOver()) {
+            this.gameOver = true;
+            if(this.gameOver) {
+                System.out.println("hi");
+                Stage dialog = new Stage();
+                dialog.initOwner(primaryStage);
+                dialog.initModality(Modality.WINDOW_MODAL);
+                dialog.setAlwaysOnTop(true);
+                VBox dialogVbox = new VBox(20);
+                dialogVbox.getChildren().add(new Text("You have clicked on a mine! Game over!"));
+                Scene dialogScene = new Scene(dialogVbox);
+                dialog.setScene(dialogScene);
+                dialog.showAndWait();
             }
         }
     }

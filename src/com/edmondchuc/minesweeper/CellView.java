@@ -66,15 +66,21 @@ public class CellView extends Rectangle {
 
     public void setEvents(GameController gameController) {
         this.setOnMouseEntered(event -> {
-            gameController.onMouseEntered(this.i);
+            if(!BoardView.gameOver) {
+                gameController.onMouseEntered(this.i);
+            }
         });
 
         this.setOnMouseExited(event -> {
-            gameController.onMouseExited(this.i);
+            if(!BoardView.gameOver) {
+                gameController.onMouseExited(this.i);
+            }
         });
 
         this.setOnMousePressed(event -> {
-            gameController.onMouseLeftClicked(this.i);
+            if(!BoardView.gameOver) {
+                gameController.onMouseLeftClicked(this.i);
+            }
         });
     }
 

@@ -1,10 +1,12 @@
 package com.edmondchuc.minesweeper;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardModel {
     CellContext[] cells;
+    boolean gameOver = false;
 
     public BoardModel(int boardSize) {
 
@@ -75,6 +77,20 @@ public class BoardModel {
         }
     }
 
+    private void setGameOver() {
+        gameOver = true;
+
+        // reveal mine field
+        for(int i = 0; i < Array.getLength(cells); i++) {
+            cells[i].setStateHoverEnter();
+            cells[i].setStateLeftClick();
+        }
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     public void onMouseEntered(int i) {
         cells[i].setStateHoverEnter();
     }
@@ -85,5 +101,8 @@ public class BoardModel {
 
     public void onMouseLeftClicked(int i) {
         cells[i].setStateLeftClick();
+        if(cells[i].isBomb()) {
+            setGameOver();
+        }
     }
 }
