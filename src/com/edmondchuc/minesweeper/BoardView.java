@@ -16,69 +16,51 @@ import java.io.FileNotFoundException;
 
 public class BoardView {
 
-//    Image cellDefault;
-//    Image cellHover;
-//    Image cellDownEmpty;
-//    Image cellDownBomb;
-//
-//    Image cellOne;
-//    Image cellTwo;
-//    Image cellThree;
-//    Image cellFour;
-//    Image cellFive;
-//    Image cellSix;
-//    Image cellSeven;
-//    Image cellEight;
-
     Paint cellDefault = Color.LIGHTBLUE;
     Paint cellHover = Color.GREENYELLOW;
     Paint cellDownEmpty = Color.ALICEBLUE;
     Paint cellDownBomb = Color.RED;
 
-    CellView[][] cells;
+    CellView[] cells;
 
     int boardSize;
+    int n; // size of list of cells
 
     public BoardView(ObservableList list, int boardSize) throws FileNotFoundException {
 
-//        String dirPath = "assets" + File.separator + "original" + File.separator;
-        String dirPath = "assets" + File.separator;
-//        cellDefault = new Image(new FileInputStream( dirPath + "cell-default.png"));
-//        cellHover = new Image(new FileInputStream(dirPath + "cell-hover.png"));
-//        cellDownEmpty = new Image(new FileInputStream(dirPath + "cell-down.png"));
-//        cellDownBomb = new Image(new FileInputStream(dirPath + "cell-bomb-hit.png"));
-//        cellDefault = new Image(new FileInputStream( dirPath + "Cell.png"));
-//        cellHover = new Image(new FileInputStream(dirPath + "CellOver.png"));
-//        cellDownEmpty = new Image(new FileInputStream(dirPath + "CellDown.png"));
-//        cellDownBomb = new Image(new FileInputStream(dirPath + "ExplodedMineCell.png"));
-
-
-
-        cells = new CellView[boardSize][boardSize];
-
         this.boardSize = boardSize;
+        this.n = boardSize*boardSize;
+        cells = new CellView[n];
 
         // size of cell image length in pixels
         int sizeOfCell = 512;
         double length = sizeOfCell/boardSize;
 
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                // cell view
-                cells[i][j] = new CellView(i, j, length);
-                cells[i][j].setX(length * j);
-                cells[i][j].setY(length * i + 128);
-                cells[i][j].setHeight(length);
-                cells[i][j].setWidth(length);
-                cells[i][j].setStroke(Color.GREENYELLOW);
-                cells[i][j].setFill(cellDefault);
+        int col = 0;
+        int row = 0;
+        for(int i = 0; i < n; i++) {
+
+            // cell view
+            cells[i] = new CellView(i, col, row, length);
+            cells[i].setX(length * col);
+            cells[i].setY(length * row + 128);
+            cells[i].setHeight(length);
+            cells[i].setWidth(length);
+            cells[i].setStroke(Color.GREENYELLOW);
+            cells[i].setFill(cellDefault);
 //                cells[i][j].imageView.setFitHeight(length);
 //                cells[i][j].imageView.setFitWidth(length);
-                list.add(cells[i][j]);
+            list.add(cells[i]);
 
-                list.add(cells[i][j].text);
+            list.add(cells[i].text);
+
+            col++;
+            if(col >= boardSize) {
+                row++;
+                col = 0;
             }
         }
+
 
 //        Image test = new Image(new FileInputStream("assets" + File.separator + "original" + File.separator + "cell-bomb-hit.png"));
 //        ImageView viewTest = new ImageView(test);
@@ -92,29 +74,25 @@ public class BoardView {
     }
 
     public void setEvents(GameController gameController) {
-        for(int i = 0; i < boardSize; i++) {
-            for (int j = 0; j < boardSize; j++) {
-                cells[i][j].setEvents(gameController);
-            }
+        for(int i = 0; i < n; i++) {
+            cells[i].setEvents(gameController);
         }
     }
 
     public void setView(BoardModel model) {
-        for(int i = 0; i < boardSize; i++) {
-            for (int j = 0; j < boardSize; j++) {
-                if(model.cells[i][j].getState().getClass() == CellDefault.class) {
-                    cells[i][j].setFill(cellDefault); //.imageView.setImage(cellDefault);
-                }
-                else if(model.cells[i][j].getState().getClass() == CellHover.class) {
-                    cells[i][j].setFill(cellHover); //imageView.setImage((cellHover));
-                }
-                else if(model.cells[i][j].getState().getClass() == CellRevealedBomb.class) {
-                    cells[i][j].setFill(cellDownBomb); //imageView.setImage(cellDownBomb);
-                }
-                else if(model.cells[i][j].getState().getClass() == CellRevealedEmpty.class) {
-                    cells[i][j].setFill(cellDownEmpty); //imageView.setImage(cellDownEmpty);
-                    cells[i][j].setBombText(model.cells[i][j].getNumOfNeighboursIsBomb());
-                }
+        for(int i = 0; i < n; i++) {
+            if(model.cells[i].getState().getClass() == CellDefault.class) {
+                cells[i].setFill(cellDefault); //.imageView.setImage(cellDefault);
+            }
+            else if(model.cells[i].getState().getClass() == CellHover.class) {
+                cells[i].setFill(cellHover); //imageView.setImage((cellHover));
+            }
+            else if(model.cells[i].getState().getClass() == CellRevealedBomb.class) {
+                cells[i].setFill(cellDownBomb); //imageView.setImage(cellDownBomb);
+            }
+            else if(model.cells[i].getState().getClass() == CellRevealedEmpty.class) {
+                cells[i].setFill(cellDownEmpty); //imageView.setImage(cellDownEmpty);
+                cells[i].setBombText(model.cells[i].getNumOfNeighboursIsBomb());
             }
         }
     }

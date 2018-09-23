@@ -10,18 +10,18 @@ public class GameController {
         view.setEvents(this);
     }
 
-    public void onMouseEntered(int i, int j) {
-        model.onMouseEntered(i, j);
+    public void onMouseEntered(int i) {
+        model.onMouseEntered(i);
         view.setView(model);
     }
 
-    public void onMouseExited(int i, int j) {
-        model.onMouseExited(i, j);
+    public void onMouseExited(int i) {
+        model.onMouseExited(i);
         view.setView(model);
     }
 
-    public void onMouseLeftClicked(int i, int j) {
-        model.onMouseLeftClicked(i, j);
+    public void onMouseLeftClicked(int i) {
+        model.onMouseLeftClicked(i);
         view.setView(model);
     }
 }

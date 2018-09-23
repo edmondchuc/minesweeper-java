@@ -4,67 +4,85 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardModel {
-    CellContext[][] cells;
+    CellContext[] cells;
 
     public BoardModel(int boardSize) {
-        cells = new CellContext[boardSize][boardSize];
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                if(i == 0 && j == 0 || i == 2 && j == 1 || i == 2 && j == 2 || i == 2 && j == 3 || i == 3 && j == 0 ||
-                        i == 4 && j == 7 || i == 5 && j == 0 || i == 5 && j == 5 || i == 7 && j == 3 || i == 7 && j == 6) {
-                    cells[i][j] = new CellContext(true);
-                }
-                else {
-                    cells[i][j] = new CellContext(false);
-                }
+        int n = boardSize*boardSize;
+        cells = new CellContext[n];
+        for(int i = 0; i < n; i++) {
+            if(i == 0 || i == 17 || i == 18 || i == 19 || i == 24 || i == 39 || i == 40 || i == 45 || i == 59 || i == 62) {
+                cells[i] = new CellContext(true);
+            }
+            else {
+                cells[i] = new CellContext(false);
             }
         }
 
         // set the neighbours of each cell if they don't contain a bomb
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                if(!cells[i][j].isBomb()) {
-                    List neighbours = new ArrayList();
-                    if(i > 0) {
-                        neighbours.add(cells[i-1][j]); // top
-                        if(j > 0) {
-                            neighbours.add(cells[i-1][j-1]); // top-left
-                        }
-                        if(j < boardSize-1) {
-                            neighbours.add(cells[i-1][j+1]); // top-right
-                        }
-                    }
-                    if(j < boardSize-1) {
-                        neighbours.add(cells[i][j+1]); // right
-                    }
-                    if(i < boardSize-1) {
-                        neighbours.add(cells[i+1][j]); // bottom
-                        if(j > 0) {
-                            neighbours.add(cells[i+1][j-1]); // bottom-left
-                        }
-                        if(j < boardSize-1) {
-                            neighbours.add(cells[i+1][j+1]); // bottom-right
-                        }
-                    }
-                    if(j > 0) {
-                        neighbours.add(cells[i][j-1]); // left
-                    }
+        for(int i = 0; i < n; i++) {
+            if(!cells[i].isBomb()) {
+                List neighbours = new ArrayList();
+                int cell = i;
 
-                    cells[i][j].setNeighbours(neighbours);
+                // TOP
+                int topLeft = cell - boardSize - 1;
+                if(topLeft >= 0 && cell % boardSize != 0) {
+                    neighbours.add(cells[topLeft]);
                 }
+
+                int top = cell - boardSize;
+                if(top >= 0) {
+                    neighbours.add(cells[top]);
+                }
+
+                int topRight = cell - boardSize + 1;
+                if(topRight > 0 && cell % boardSize != boardSize-1) {
+                    neighbours.add(cells[topRight]);
+                }
+
+                // SIDES
+                int left = cell - 1;
+                if(cell % boardSize != 0) {
+                    neighbours.add(cells[left]);
+                }
+
+                int right = cell + 1;
+                if(cell % boardSize != boardSize-1) {
+                    neighbours.add(cells[right]);
+                }
+
+                // BOTTOM
+                int botLeft = cell + boardSize - 1;
+                if(botLeft < n-1 && cell % boardSize != 0) {
+                    neighbours.add(cells[botLeft]);
+                }
+
+                int bot = cell + boardSize;
+                if(bot <  n-1) {
+                    neighbours.add(cells[bot]);
+                }
+
+                int botRight = cell + boardSize + 1;
+                if(botRight < n-1 && cell % boardSize != boardSize-1) {
+                    neighbours.add(cells[botRight]);
+                }
+
+
+                cells[i].setNeighbours(neighbours);
             }
+
         }
     }
 
-    public void onMouseEntered(int i, int j) {
-        cells[i][j].setStateHoverEnter();
+    public void onMouseEntered(int i) {
+        cells[i].setStateHoverEnter();
     }
 
-    public void onMouseExited(int i, int j) {
-        cells[i][j].setStateHoverExit();
+    public void onMouseExited(int i) {
+        cells[i].setStateHoverExit();
     }
 
-    public void onMouseLeftClicked(int i, int j) {
-        cells[i][j].setStateLeftClick();
+    public void onMouseLeftClicked(int i) {
+        cells[i].setStateLeftClick();
     }
 }

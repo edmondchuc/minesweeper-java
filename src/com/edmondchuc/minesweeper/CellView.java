@@ -10,17 +10,15 @@ import java.io.File;
 
 public class CellView extends Rectangle {
     private int i;
-    private int j;
 //    public ImageView imageView;
     public Text text;
 
-    public CellView(int i, int j, double length) {
+    public CellView(int i, int col, int row, double length) {
         this.i = i;
-        this.j = j;
 //        imageView = new ImageView(cellDefault);
 
         // text for the neighbouring bombs
-        text = new Text(length * j + 20, length * i + 170, "3");
+        text = new Text(length * col + 20, length * row + 170, "3");
         text.setFont(new Font(20));
         text.setText("");
     }
@@ -33,23 +31,16 @@ public class CellView extends Rectangle {
 
     public void setEvents(GameController gameController) {
         this.setOnMouseEntered(event -> {
-            gameController.onMouseEntered(this.i, this.j);
+            gameController.onMouseEntered(this.i);
         });
 
         this.setOnMouseExited(event -> {
-            gameController.onMouseExited(this.i, this.j);
+            gameController.onMouseExited(this.i);
         });
 
         this.setOnMousePressed(event -> {
-            gameController.onMouseLeftClicked(this.i, this.j);
+            gameController.onMouseLeftClicked(this.i);
         });
     }
 
-    public int getJ() {
-        return i;
-    }
-
-    public int getI() {
-        return j;
-    }
 }
