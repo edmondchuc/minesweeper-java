@@ -1,7 +1,5 @@
 package com.edmondchuc.minesweeper;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -19,7 +17,7 @@ public class CellView extends Rectangle {
 //        imageView = new ImageView(cellDefault);
 
         // text for the neighbouring bombs
-        text = new Text(length * col + 27, length * row + 168, "3");
+        text = new Text(length * col + 27, length * row + 164, "3");
         text.setFont(new Font(20));
         text.setText("");
     }

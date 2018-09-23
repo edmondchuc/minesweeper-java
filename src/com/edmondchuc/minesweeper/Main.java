@@ -57,52 +57,7 @@ public class Main extends Application {
         }
     }
 
-    public void createGameModeMenu(ObservableList list, int screenWidth, int screenHeight) {
-        // select game mode
-        MenuBar gameModeMenuBar = new MenuBar();
-        gameModeMenuBar.setPrefSize(170, 30);
-        gameModeMenuBar.setLayoutX(screenWidth/2 - 170/2);
-        gameModeMenuBar.setLayoutY(20);
-        Menu gameModeMenu = new Menu("Select game mode...");
-        gameModeMenuBar.getMenus().add(gameModeMenu);
-        RadioMenuItem radioMenuEasy = new RadioMenuItem("Easy");
-        RadioMenuItem radioMenuMedium = new RadioMenuItem("Medium");
-        RadioMenuItem radioMenuHard = new RadioMenuItem("Hard");
-        ToggleGroup toggleGroupGameMode = new ToggleGroup();
-        toggleGroupGameMode.getToggles().add(radioMenuEasy);
-        toggleGroupGameMode.getToggles().add(radioMenuMedium);
-        toggleGroupGameMode.getToggles().add(radioMenuHard);
-        toggleGroupGameMode.selectToggle(radioMenuEasy);
-        gameModeMenu.getItems().add(radioMenuEasy);
-        gameModeMenu.getItems().add(radioMenuMedium);
-        gameModeMenu.getItems().add(radioMenuHard);
 
-        Text text = new Text(screenWidth/ 2, 75 ,"Easy");
-        text.prefWidth(100);
-        text.setLayoutX(-text.getLayoutBounds().getWidth());
-        text.setFont(new Font(20));
-//        text.setText("");
-        gameModeMenu.setOnAction(value -> {
-            RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
-            text.setText(selected.getText());
-        });
-
-        list.add(gameModeMenuBar);
-        list.add(text);
-
-        // start button
-        Button startGame = new Button("Start game");
-        startGame.setPrefSize(100, 30);
-        startGame.setLayoutX(screenWidth/2 - 100/2);
-        startGame.setLayoutY(screenHeight - 80);
-        startGame.setOnAction(value -> {
-            //TODO: hook it up to start the game
-            RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
-            System.out.println("Starting game with difficulty: " + selected.getText());
-
-        });
-        list.add(startGame);
-    }
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
@@ -114,8 +69,8 @@ public class Main extends Application {
         Image cellDownImage = new Image(new FileInputStream("assets" + File.separator + "CellDown.png"));
 
         // screen size
-        int screenWidth = 512; // 512 for the default game
-        int screenHeight = 640;// 640
+        int screenWidth = 512+128; // 512 for the default game
+        int screenHeight = 640+128;// 640
 
 
         // Creating a group object
@@ -125,14 +80,15 @@ public class Main extends Application {
 
         // select game mode
 //        createGameModeMenu(list, screenWidth, screenHeight);
+        GameMode gameMode = new GameMode(primaryStage);
 
         // select difficulty
 
 
 
-        BoardModel model = new BoardModel(8);
-        BoardView view = new BoardView(list, 8);
-        GameController gameController = new GameController(model, view);
+//        BoardModel model = new BoardModel(8);
+//        BoardView view = new BoardView(list, 8);
+//        GameController gameController = new GameController(model, view);
 
         // draw rectangle for test
 //        Rectangle rect = new Rectangle(100, 250, 100, 100);
@@ -163,20 +119,7 @@ public class Main extends Application {
 //        // add it to view
 //        list.add(menuBar);
 
-        // Creating a scene object
-        Scene scene = new Scene(root, screenWidth, screenHeight);
 
-        // Setting title to the stage
-        primaryStage.setTitle("Minesweeper by Edmond Chuc");
-
-        // Adding scene to the stage
-        primaryStage.setScene(scene);
-
-        // Displaying the contents of the stage
-        primaryStage.show();
-
-        // Disable window resize
-        primaryStage.setResizable(false);
 
 
 

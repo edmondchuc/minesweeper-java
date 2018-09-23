@@ -7,6 +7,7 @@ public class BoardModel {
     CellContext[] cells;
 
     public BoardModel(int boardSize) {
+
         int n = boardSize*boardSize;
         cells = new CellContext[n];
         for(int i = 0; i < n; i++) {

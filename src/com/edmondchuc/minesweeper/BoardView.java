@@ -1,6 +1,7 @@
 package com.edmondchuc.minesweeper;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -26,15 +27,14 @@ public class BoardView {
     int boardSize;
     int n; // size of list of cells
 
-    public BoardView(ObservableList list, int boardSize) throws FileNotFoundException {
+    public BoardView(ObservableList list, int boardSize, Stage primaryStage) {
 
         this.boardSize = boardSize;
         this.n = boardSize*boardSize;
         cells = new CellView[n];
 
         // size of cell image length in pixels
-        int sizeOfCell = 512;
-        double length = sizeOfCell/boardSize;
+        double length = 40;//sizeOfCell/boardSize;
 
         int col = 0;
         int row = 0;
@@ -62,14 +62,12 @@ public class BoardView {
         }
 
 
-//        Image test = new Image(new FileInputStream("assets" + File.separator + "original" + File.separator + "cell-bomb-hit.png"));
-//        ImageView viewTest = new ImageView(test);
-//        viewTest.setX(200);
-//        viewTest.setY(200);
-//        viewTest.setFitHeight(length);
-//        viewTest.setFitWidth(length);
-//        list.add(viewTest);
-
+        // main menu button
+        Button startGame = new Button("Main Menu");
+        list.add(startGame);
+        startGame.setOnMouseClicked(e -> {
+            GameMode gameMode = new GameMode(primaryStage);
+        });
 
     }
 
