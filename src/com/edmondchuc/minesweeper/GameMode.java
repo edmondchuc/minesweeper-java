@@ -27,36 +27,72 @@ public class GameMode {
         root.setSpacing(20);
         ObservableList list = root.getChildren();
 
+        Text title = new Text("Minesweeper");
+        title.setFont(new Font(50));
+        title.setUnderline(true);
+        list.add(title);
+
         // select game mode
         MenuBar gameModeMenuBar = new MenuBar();
         gameModeMenuBar.setPrefSize(170, 30);
         gameModeMenuBar.setLayoutY(20);
         Menu gameModeMenu = new Menu("Select game mode...");
         gameModeMenuBar.getMenus().add(gameModeMenu);
-        RadioMenuItem radioMenuEasy = new RadioMenuItem("Easy");
-        RadioMenuItem radioMenuMedium = new RadioMenuItem("Medium");
-        RadioMenuItem radioMenuHard = new RadioMenuItem("Hard");
+        RadioMenuItem radioMenuClassic = new RadioMenuItem("Classic");
+        RadioMenuItem radiomenuHex = new RadioMenuItem("Hex");
+        RadioMenuItem radioMenuColor = new RadioMenuItem("Color");
         ToggleGroup toggleGroupGameMode = new ToggleGroup();
-        toggleGroupGameMode.getToggles().add(radioMenuEasy);
-        toggleGroupGameMode.getToggles().add(radioMenuMedium);
-        toggleGroupGameMode.getToggles().add(radioMenuHard);
-        toggleGroupGameMode.selectToggle(radioMenuEasy);
-        gameModeMenu.getItems().add(radioMenuEasy);
-        gameModeMenu.getItems().add(radioMenuMedium);
-        gameModeMenu.getItems().add(radioMenuHard);
+        toggleGroupGameMode.getToggles().add(radioMenuClassic);
+        toggleGroupGameMode.getToggles().add(radiomenuHex);
+        toggleGroupGameMode.getToggles().add(radioMenuColor);
+        toggleGroupGameMode.selectToggle(radioMenuClassic);
+        gameModeMenu.getItems().add(radioMenuClassic);
+        gameModeMenu.getItems().add(radiomenuHex);
+        gameModeMenu.getItems().add(radioMenuColor);
 
-        Text text = new Text(100, 75 ,"Easy");
-        text.prefWidth(100);
-        text.setLayoutX(-text.getLayoutBounds().getWidth());
-        text.setFont(new Font(20));
-//        text.setText("");
+        Text gameModeText = new Text(100, 75 ,"Classic");
+        gameModeText.prefWidth(100);
+        gameModeText.setLayoutX(-gameModeText.getLayoutBounds().getWidth());
+        gameModeText.setFont(new Font(20));
+
         gameModeMenu.setOnAction(value -> {
             RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
-            text.setText(selected.getText());
+            gameModeText.setText(selected.getText());
         });
 
         list.add(gameModeMenuBar);
-        list.add(text);
+        list.add(gameModeText);
+
+        // select difficulty
+        MenuBar difficultyMenuBar = new MenuBar();
+        difficultyMenuBar.setPrefSize(170, 30);
+        difficultyMenuBar.setLayoutY(20);
+        Menu difficultyMenu = new Menu("Select difficulty...");
+        difficultyMenuBar.getMenus().add(difficultyMenu);
+        RadioMenuItem radioMenuEasy = new RadioMenuItem("Easy");
+        RadioMenuItem radioMenuMedium = new RadioMenuItem("Medium");
+        RadioMenuItem radioMenuHard = new RadioMenuItem("Hard");
+        ToggleGroup toggleDifficultyMode = new ToggleGroup();
+        toggleDifficultyMode.getToggles().add(radioMenuEasy);
+        toggleDifficultyMode.getToggles().add(radioMenuMedium);
+        toggleDifficultyMode.getToggles().add(radioMenuHard);
+        toggleDifficultyMode.selectToggle(radioMenuEasy);
+        difficultyMenu.getItems().add(radioMenuEasy);
+        difficultyMenu.getItems().add(radioMenuMedium);
+        difficultyMenu.getItems().add(radioMenuHard);
+
+        Text difficultyText = new Text(100, 75 ,"Easy");
+        difficultyText.prefWidth(100);
+        difficultyText.setLayoutX(-difficultyText.getLayoutBounds().getWidth());
+        difficultyText.setFont(new Font(20));
+//        text.setText("");
+        difficultyMenu.setOnAction(value -> {
+            RadioMenuItem selected = (RadioMenuItem) toggleDifficultyMode.getSelectedToggle();
+            difficultyText.setText(selected.getText());
+        });
+
+        list.add(difficultyMenuBar);
+        list.add(difficultyText);
 
         // start button
         Button startGame = new Button("Start game");
@@ -64,23 +100,27 @@ public class GameMode {
         startGame.setLayoutY(100);
         startGame.setOnAction(value -> {
 
-            RadioMenuItem selected = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
-            System.out.println("Starting game with difficulty: " + selected.getText());
+            RadioMenuItem selectedGameMode = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
+            System.out.println("Starting game with difficulty: " + selectedGameMode.getText());
+
+            RadioMenuItem selectedDifficulty = (RadioMenuItem) toggleDifficultyMode.getSelectedToggle();
+            System.out.println("Starting game with difficulty: " + selectedDifficulty.getText());
 
             Group modes = new Group();
             ObservableList newList = modes.getChildren();
 
-            if(selected.getText() == "Easy") {
+            //TODO: add hex and color game mode
+            if(selectedDifficulty.getText() == "Easy") {
                 BoardModel model = new BoardModel(8);
                 BoardView view = new BoardView(newList, 8, primaryStage);
                 GameController gameController = new GameController(model, view);
             }
-            else if(selected.getText() == "Medium") {
+            else if(selectedDifficulty.getText() == "Medium") {
                 BoardModel model = new BoardModel(12);
                 BoardView view = new BoardView(newList, 12, primaryStage);
                 GameController gameController = new GameController(model, view);
             }
-            else if(selected.getText() == "Hard") {
+            else if(selectedDifficulty.getText() == "Hard") {
                 BoardModel model = new BoardModel(16);
                 BoardView view = new BoardView(newList, 16, primaryStage);
                 GameController gameController = new GameController(model, view);
