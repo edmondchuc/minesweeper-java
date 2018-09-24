@@ -12,14 +12,30 @@ public class CellView extends Polygon {
     protected int i;
     protected Text text;
 
-    public CellView(int i, int col, int row, double length) {
+    public CellView(int i, int col, int row, double length, int gameMode) {
         this.i = i;
 //        imageView = new ImageView(cellDefault);
 
         // text for the neighbouring bombs
-        text = new Text(length * col + 27, length * row + 164, "3");
-        text.setFont(new Font(20));
-        text.setText("");
+        if(gameMode == GameMode.CLASSIC) {
+            text = new Text(length * col + 27, length * row + 164, "3");
+            text.setFont(new Font(20));
+            text.setText("");
+        }
+        else if(gameMode == GameMode.HEX) {
+            if(row % 2 == 0) {
+                text = new Text(length * col + 65, length * row + 157, "3");
+                text.setFont(new Font(20));
+                text.setText("");
+            }
+            else {
+                text = new Text(length * col + 45, length * row + 157, "3");
+                text.setFont(new Font(20));
+                text.setText("");
+            }
+
+        }
+
     }
 
     public Text getText() {

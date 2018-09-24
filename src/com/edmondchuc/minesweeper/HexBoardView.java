@@ -9,16 +9,17 @@ public class HexBoardView extends BoardView {
     public HexBoardView(ObservableList list, int boardSize, Stage primaryStage) {
         super(list, boardSize, primaryStage);
 
-        double length = 40;//sizeOfCell/boardSize;
+        double length = 50;//sizeOfCell/boardSize;
         int col = 0;
         int row = 0;
+        int offSet = 20;
         double a = (float)length/4;
         double b = Math.sqrt(3) * a;
 
         for(int i = 0; i < n; i++) {
 
             // cell view
-            cells[i] = new CellView(i, col, row, length);
+            cells[i] = new CellView(i, col, row, length, GameMode.HEX);
 
             // DRAW HEXAGONS
             cells[i].getPoints().addAll(new Double[]{
@@ -34,8 +35,23 @@ public class HexBoardView extends BoardView {
             ///TODO: Fix the window size when starting a hex game
             //TODO: Refactor BoardView for classic and hex
             //TODO: Add neighbour calculations for hex
-            cells[i].setTranslateX(length * col + 50);
-            cells[i].setTranslateY(length * row + 128);
+
+//            if(row == 0) {
+//                cells[i].setTranslateX(length * col + 50 + offSet);
+//                cells[i].setTranslateY(length * row + 128);
+//            }
+
+            if(row % 2 == 0) {
+                cells[i].setTranslateX(length * col + 50 + offSet);
+                cells[i].setTranslateY(length * row + 150);
+            }
+            else {
+                cells[i].setTranslateX(length * col + 50);
+                cells[i].setTranslateY(length * row + 150);
+            }
+
+
+
 
 
 

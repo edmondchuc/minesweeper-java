@@ -15,7 +15,7 @@ public class ClassicBoardView extends BoardView {
         for(int i = 0; i < n; i++) {
 
             // cell view
-            cells[i] = new CellView(i, col, row, length);
+            cells[i] = new CellView(i, col, row, length, GameMode.CLASSIC);
             cells[i].getPoints().addAll(new Double[]{
 
 

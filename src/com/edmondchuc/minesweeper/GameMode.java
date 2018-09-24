@@ -126,28 +126,39 @@ public class GameMode {
                     ClassicBoardView view = new ClassicBoardView(newList, 16, primaryStage);
                     GameController gameController = new GameController(model, view);
                 }
+
+                Scene game = new Scene(modes);
+                primaryStage.setScene(game);
             }
             else if(selectedGameMode.getText() == "Hex") {
                 if(selectedDifficulty.getText() == "Easy") {
                     BoardModel model = new BoardModel(8);
                     HexBoardView view = new HexBoardView(newList, 8, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    Scene game = new Scene(modes, 512, 550);
+                    primaryStage.setScene(game);
                 }
                 else if(selectedDifficulty.getText() == "Medium") {
                     BoardModel model = new BoardModel(12);
                     HexBoardView view = new HexBoardView(newList, 12, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    Scene game = new Scene(modes, 700, 764);
+                    primaryStage.setScene(game);
                 }
                 else if(selectedDifficulty.getText() == "Hard") {
                     BoardModel model = new BoardModel(16);
                     HexBoardView view = new HexBoardView(newList, 16, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    Scene game = new Scene(modes, 900, 950);
+                    primaryStage.setScene(game);
                 }
+
+
+
             }
 
 
-            Scene game = new Scene(modes, 700, 700);
-            primaryStage.setScene(game);
+
 
 
         });
