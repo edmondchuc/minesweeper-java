@@ -27,7 +27,9 @@ public class CellContext {
 
     public void setNeighbours(List neighbours) {
         this.neighbours = neighbours;
+    }
 
+    public void setBombNeighbours() {
         // find the number of neighbours who are bombs
         if(!this.isBomb) {
             for(CellContext neighbour : this.neighbours) {
@@ -42,8 +44,16 @@ public class CellContext {
         return neighbours;
     }
 
+    /**
+     * Check if the cell is a bomb.
+     * @return The boolean if the cell is a bomb
+     */
     public boolean isBomb() {
         return isBomb;
+    }
+
+    public void setBomb() {
+        this.isBomb = true;
     }
 
     /**

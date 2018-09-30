@@ -3,22 +3,49 @@ package com.edmondchuc.minesweeper;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class BoardModel {
     CellContext[] cells;
     boolean gameOver = false;
+    int revealedCount;
+    int bombCount;
 
-    public BoardModel(int boardSize, int gameMode) {
+    public BoardModel(int boardSize, int gameMode, int difficulty) {
 
         int n = boardSize*boardSize;
         cells = new CellContext[n];
+
+        // set the number of bombs to have
+        if(difficulty == GameMode.EASY) { bombCount = 10; }
+        if(difficulty == GameMode.MEDIUM) { bombCount = 15; }
+        if(difficulty == GameMode.HARD) { bombCount = 20; }
+
+        // set the revealedCount to check if the win condition has been met
+        revealedCount = n - bombCount;
+
+        // loop through the board and assign bombs - used for TESTING - static bombs
+//        for(int i = 0; i < n; i++) {
+//            if(i == 0 || i == 17 || i == 18 || i == 19 || i == 24 || i == 39 || i == 40 || i == 45 || i == 59 || i == 62) {
+//                cells[i] = new CellContext(true);
+//            }
+//            else {
+//                cells[i] = new CellContext(false);
+//            }
+//        }
+
         for(int i = 0; i < n; i++) {
-            if(i == 0 || i == 17 || i == 18 || i == 19 || i == 24 || i == 39 || i == 40 || i == 45 || i == 59 || i == 62) {
-                cells[i] = new CellContext(true);
-            }
-            else {
-                cells[i] = new CellContext(false);
-            }
+            cells[i] = new CellContext(false);
+        }
+
+        // assign bombs
+        Random rand = new Random();
+        for(int i = 0; i < bombCount; i++) {
+            int id;
+            do {
+                id = rand.nextInt(n);
+            } while(cells[id].isBomb());
+            cells[id].setBomb();
         }
 
         // set the neighbours of each cell if they don't contain a bomb
@@ -137,7 +164,16 @@ public class BoardModel {
             }
         }
 
+        // set the bomb neighbours in each cell
+        for(int i = 0; i < n; i++) {
+            cells[i].setBombNeighbours();
+        }
 
+
+    }
+
+    public int getRevealedCount() {
+        return revealedCount;
     }
 
     private void setGameOver() {
@@ -166,6 +202,8 @@ public class BoardModel {
         cells[i].setStateLeftClick();
         if(cells[i].isBomb()) {
             setGameOver();
+        } else {
+            revealedCount--;
         }
     }
 }

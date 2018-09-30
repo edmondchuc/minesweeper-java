@@ -16,9 +16,9 @@ public class CellView extends Polygon {
         this.i = i;
 //        imageView = new ImageView(cellDefault);
 
-        // text for the neighbouring bombs
+        // text for the neighbouring bombs //TODO: split this into ClassicCellView and HexCellView to handle GameMode
         if(gameMode == GameMode.CLASSIC) {
-            text = new Text(length * col + 27, length * row + 164, "3");
+            text = new Text(length * col + 15, length * row + 155, "3");
             text.setFont(new Font(20));
             text.setText("");
         }
