@@ -86,19 +86,19 @@ public class CellView extends Polygon {
 
     public void setEvents(GameController gameController) {
         this.setOnMouseEntered(event -> {
-            if(!BoardView.gameOver) {
+            if(!BoardView.gameOver && !BoardView.win) {
                 gameController.onMouseEntered(this.i);
             }
         });
 
         this.setOnMouseExited(event -> {
-            if(!BoardView.gameOver) {
+            if(!BoardView.gameOver && !BoardView.win) {
                 gameController.onMouseExited(this.i);
             }
         });
 
         this.setOnMousePressed(event -> {
-            if(!BoardView.gameOver) {
+            if(!BoardView.gameOver && !BoardView.win) {
                 gameController.onMouseLeftClicked(this.i);
             }
         });

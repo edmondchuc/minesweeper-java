@@ -8,8 +8,11 @@ import java.util.Random;
 public class BoardModel {
     CellContext[] cells;
     boolean gameOver = false;
+    boolean win = false;
     int revealedCount;
     int bombCount;
+    final int winCount;
+    int flagCount;
 
     public BoardModel(int boardSize, int gameMode, int difficulty) {
 
@@ -17,12 +20,16 @@ public class BoardModel {
         cells = new CellContext[n];
 
         // set the number of bombs to have
-        if(difficulty == GameMode.EASY) { bombCount = 10; }
-        if(difficulty == GameMode.MEDIUM) { bombCount = 15; }
-        if(difficulty == GameMode.HARD) { bombCount = 20; }
+        if(difficulty == GameMode.EASY) { bombCount = 2; }
+        else if(difficulty == GameMode.MEDIUM) { bombCount = 15; }
+        else if(difficulty == GameMode.HARD) { bombCount = 20; }
+        else { throw new java.lang.Error("Invalid game difficulty"); }
 
         // set the revealedCount to check if the win condition has been met
-        revealedCount = n - bombCount;
+        revealedCount = 0;
+        winCount = n - bombCount;
+
+        flagCount = bombCount;
 
         // loop through the board and assign bombs - used for TESTING - static bombs
 //        for(int i = 0; i < n; i++) {
@@ -186,8 +193,16 @@ public class BoardModel {
         }
     }
 
+    public boolean isWin() {
+        return win;
+    }
+
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public int getFlagCount() {
+        return flagCount;
     }
 
     public void onMouseEntered(int i) {
@@ -203,7 +218,16 @@ public class BoardModel {
         if(cells[i].isBomb()) {
             setGameOver();
         } else {
-            revealedCount--;
+            // loop through the arrays and get the number of revealed empty cells
+            revealedCount = 0;
+            for(int j = 0; j < cells.length; j++) {
+                if(cells[j].getState() instanceof CellRevealedEmpty) {
+                    revealedCount++;
+                }
+            }
+            if(revealedCount == winCount) {
+                win = true;
+            }
         }
     }
 }

@@ -33,9 +33,13 @@ public class BoardView {
     Stage primaryStage;
 
     static boolean gameOver;
+    static boolean win;
+
+    Text textFlagCount;
 
     public BoardView(ObservableList list, int boardSize, Stage primaryStage) {
         this.gameOver = false;
+        this.win = false;
 
         this.primaryStage = primaryStage;
 
@@ -45,8 +49,11 @@ public class BoardView {
 
         // size of cell image length in pixels
 
-
-
+        textFlagCount = new Text("");
+        textFlagCount.toFront();
+        textFlagCount.setX(30);
+        textFlagCount.setY(100);
+        list.add(textFlagCount);
 
 
         // main menu button
@@ -65,6 +72,9 @@ public class BoardView {
     }
 
     public void setView(BoardModel model) {
+
+        // set the flag count
+        textFlagCount.setText("Flags: " + Integer.toString(model.getFlagCount()));
 
         for(int i = 0; i < n; i++) {
             if(model.cells[i].getState().getClass() == CellDefault.class) {
@@ -92,6 +102,21 @@ public class BoardView {
                 dialog.setAlwaysOnTop(true);
                 VBox dialogVbox = new VBox(20);
                 dialogVbox.getChildren().add(new Text("You have clicked on a mine! Game over!"));
+                Scene dialogScene = new Scene(dialogVbox);
+                dialog.setScene(dialogScene);
+                dialog.showAndWait();
+            }
+        }
+
+        if(model.isWin()) {
+            this.win = true;
+            if(this.win) {
+                Stage dialog = new Stage();
+                dialog.initOwner(primaryStage);
+                dialog.initModality(Modality.WINDOW_MODAL);
+                dialog.setAlwaysOnTop(true);
+                VBox dialogVbox = new VBox(20);
+                dialogVbox.getChildren().add(new Text("You win!"));
                 Scene dialogScene = new Scene(dialogVbox);
                 dialog.setScene(dialogScene);
                 dialog.showAndWait();
