@@ -25,6 +25,7 @@ public class BoardView {
     Paint cellHover = Color.GREENYELLOW;
     Paint cellDownEmpty = Color.ALICEBLUE;
     Paint cellDownBomb = Color.RED;
+    Paint cellFlag = Color.YELLOW;
 
     CellView[] cells;
 
@@ -74,7 +75,7 @@ public class BoardView {
     public void setView(BoardModel model) {
 
         // set the flag count
-        textFlagCount.setText("Flags: " + Integer.toString(model.getFlagCount()));
+        textFlagCount.setText("Bombs: " + Integer.toString(model.getFlagCount()));
 
         for(int i = 0; i < n; i++) {
             if(model.cells[i].getState().getClass() == CellDefault.class) {
@@ -89,6 +90,9 @@ public class BoardView {
             else if(model.cells[i].getState().getClass() == CellRevealedEmpty.class) {
                 cells[i].setFill(cellDownEmpty); //imageView.setImage(cellDownEmpty);
                 cells[i].setBombText(model.cells[i].getNumOfNeighboursIsBomb());
+            }
+            else if(model.cells[i].getState().getClass() == CellFlagged.class) {
+                cells[i].setFill(cellFlag);
             }
         }
 

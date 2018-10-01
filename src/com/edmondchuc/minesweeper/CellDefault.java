@@ -36,4 +36,9 @@ public class CellDefault implements CellState {
     public void setStateRevealedBomb(CellContext cellContext) {
 
     }
+
+    @Override
+    public void setStateRightClick(CellContext cellContext) {
+
+    }
 }

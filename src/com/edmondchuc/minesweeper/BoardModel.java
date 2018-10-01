@@ -188,8 +188,14 @@ public class BoardModel {
 
         // reveal mine field
         for(int i = 0; i < Array.getLength(cells); i++) {
-            cells[i].setStateHoverEnter();
-            cells[i].setStateLeftClick();
+            if(cells[i].getState().getClass() == CellDefault.class) {
+                cells[i].setStateHoverEnter();
+                cells[i].setStateLeftClick();
+            } else if(cells[i].getState().getClass() == CellFlagged.class) {
+                cells[i].setStateRightClick();
+                cells[i].setStateHoverEnter();
+                cells[i].setStateLeftClick();
+            }
         }
     }
 
@@ -229,5 +235,24 @@ public class BoardModel {
                 win = true;
             }
         }
+    }
+
+    public void onMouseRightClicked(int i) {
+        if(flagCount == 0 && cells[i].getState().getClass() == CellFlagged.class || flagCount > 0) {
+            cells[i].setStateRightClick();
+
+            // if it has changed to flagged, then minus flagCount
+            // else, add flagCount
+            if(cells[i].getState() instanceof CellFlagged) {
+                flagCount--;
+            } else  if(cells[i].getState() instanceof CellDefault) {
+                flagCount++;
+            } else {
+                throw new java.lang.Error("Invalid state for mouse right click. " + cells[i].getState().toString());
+            }
+        }
+
+
+
     }
 }

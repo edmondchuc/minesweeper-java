@@ -34,4 +34,6 @@ public interface CellState {
      * @param cellContext The CellContext object wrapper for a finite state machine.
      */
     public void setStateRevealedBomb(CellContext cellContext);
+
+    public void setStateRightClick(CellContext cellContext);
 }

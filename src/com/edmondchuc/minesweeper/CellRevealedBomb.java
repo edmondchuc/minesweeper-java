@@ -25,4 +25,9 @@ public class CellRevealedBomb implements CellState {
     public void setStateRevealedBomb(CellContext cellContext) {
 
     }
+
+    @Override
+    public void setStateRightClick(CellContext cellContext) {
+
+    }
 }

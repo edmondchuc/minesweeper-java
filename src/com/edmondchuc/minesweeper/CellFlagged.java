@@ -1,9 +1,7 @@
 package com.edmondchuc.minesweeper;
 
-/**
- * This class represents the state of a cell in its revealed empty state.
- */
-public class CellRevealedEmpty implements CellState {
+public class CellFlagged implements CellState {
+
     @Override
     public void setStateHoverEnter(CellContext cellContext) {
 
@@ -31,6 +29,6 @@ public class CellRevealedEmpty implements CellState {
 
     @Override
     public void setStateRightClick(CellContext cellContext) {
-
+        cellContext.setState(new CellDefault());
     }
 }

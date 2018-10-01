@@ -85,6 +85,8 @@ public class CellContext {
         this.cellState.setStateHoverEnter(this);
     }
 
+    public void setStateFlagged() { this.cellState.setStateRightClick(this); }
+
     /**
      * Calls the setStateHoverExit of the CellState object.
      * <p></p>
@@ -99,9 +101,11 @@ public class CellContext {
         this.cellState.setStateLeftClick(this);
     }
 
+    public void setStateRightClick() { this.cellState.setStateRightClick(this); }
+
     public void revealNeighbours() {
         for (CellContext neighbour : neighbours) {
-            if(neighbour.getState().getClass() != CellRevealedEmpty.class && neighbour.getState().getClass() != CellRevealedBomb.class) {
+            if(neighbour.getState().getClass() != CellRevealedEmpty.class && neighbour.getState().getClass() != CellRevealedBomb.class && neighbour.getState().getClass() != CellFlagged.class) {
                 boolean hasBomb = false; // check for bombs in its adjacent neighbours
                 for (CellContext n : neighbour.neighbours) {
                     if(n.isBomb()) {

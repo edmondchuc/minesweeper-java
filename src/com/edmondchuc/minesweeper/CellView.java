@@ -99,7 +99,12 @@ public class CellView extends Polygon {
 
         this.setOnMousePressed(event -> {
             if(!BoardView.gameOver && !BoardView.win) {
-                gameController.onMouseLeftClicked(this.i);
+
+                if(event.isPrimaryButtonDown()) {
+                    gameController.onMouseLeftClicked(this.i);
+                } else {
+                    gameController.onMouseRightClicked(this.i);
+                }
             }
         });
     }

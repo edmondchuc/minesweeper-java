@@ -68,5 +68,10 @@ public class CellHover implements CellState {
 
     }
 
+    @Override
+    public void setStateRightClick(CellContext cellContext) {
+        cellContext.setState(new CellFlagged());
+    }
+
 
 }
