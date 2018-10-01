@@ -1,5 +1,6 @@
 package com.edmondchuc.minesweeper;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,9 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 public class BoardView {
 
@@ -76,6 +75,16 @@ public class BoardView {
 //            this.gameOver = true; // used to stop the game score timer when going to the main menu.
         });
 
+//        // quit button
+//        Button quitGame = new Button("Quit");
+//        quitGame.setTranslateX(100);
+//        list.add(quitGame);
+//        quitGame.setOnMouseClicked(event -> {
+//            GameMode gameMode = new GameMode(primaryStage);
+//            scoreController.setRunning(false);
+//            System.exit(0);
+//        });
+
     }
 
     public void setEvents(GameController gameController) {
@@ -114,6 +123,7 @@ public class BoardView {
     public void checkWin(BoardModel model) {
         // if game lose, show popup to notify user
         if(model.isGameOver()) {
+            BoardView.gameOver = true;
             scoreController.setRunning(false);
 
             Stage dialog = new Stage();
@@ -133,6 +143,7 @@ public class BoardView {
         }
 
         else if(model.isWin()) {
+            BoardView.win = true;
             scoreController.setRunning(false);
 
             Stage dialog = new Stage();
@@ -148,8 +159,11 @@ public class BoardView {
             int score = scoreController.getScore();
             dialogVbox.getChildren().add(new Text("Score: " + score));
 
+            Text response = new Text("");
+            dialogVbox.getChildren().add(response);
+
             // input field for name
-            TextField textFieldName = new TextField("name");
+            TextField textFieldName = new TextField("player");
             dialogVbox.getChildren().add(textFieldName);
 
             // button save score
@@ -157,10 +171,29 @@ public class BoardView {
             dialogVbox.getChildren().add(buttonSaveScore);
             buttonSaveScore.setOnMouseClicked(event -> {
                 if(textFieldName.getCharacters().length() > 16) {
+                    //TODO: show some prompt giving the user an indication that it's too long
                     System.out.println("Too many characters! 10 max.");
+                    response.setText("Too many characters! 10 max.");
+                    response.setFill(Color.RED);
                 } else {
                     System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);
+                    response.setText("Score Saved!");
+                    response.setFill(Color.LIGHTGREEN);
                     buttonSaveScore.setVisible(false);
+
+                    // save the score to file
+                    String filename = "hiscore.txt";
+                    try {
+//                        FileWriter fileWriter = new FileWriter(filename);
+                        PrintWriter printWriter = new PrintWriter(new FileOutputStream(new File(filename), true));
+//                        printWriter.printf("%s %d", textFieldName.getText(), score);
+                        // always remove whitespace in name
+                        printWriter.append(textFieldName.getText().replaceAll("\\s+","") + " " + score + "\n");
+
+                        printWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 

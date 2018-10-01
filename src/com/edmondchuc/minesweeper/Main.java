@@ -137,5 +137,6 @@ public class Main extends Application {
     @Override
     public void stop() {
         System.out.println("User closed the application.");
+        System.exit(0);
     }
 }

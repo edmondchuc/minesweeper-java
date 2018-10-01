@@ -31,7 +31,7 @@ public class ScoreController {
                     } else {
                         scoreView.delete();
                         timer.cancel();
-                        timer.purge();
+                        timer.purge(); // use this to end the threads once the application is closed.
                     }
                 });
             }

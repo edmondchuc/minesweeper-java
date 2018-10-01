@@ -10,6 +10,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
 public class GameMode {
 
     static int EASY = 0;
@@ -178,10 +186,78 @@ public class GameMode {
         });
         list.add(startGame);
 
+        // hiscore view
+        Button hiscoreButton = new Button("View hiscore");
+        list.add(hiscoreButton);
+        hiscoreButton.setOnAction(event -> {
+            System.out.println("Viewing hiscore");
+            Group hiscoreGroup = new Group();
+
+            // add stuff to group to be viewed in new scene
+            ObservableList hiscoreList = hiscoreGroup.getChildren();
+
+            VBox box = new VBox();
+            hiscoreList.add(box);
+            box.setPadding(new Insets(10, 10, 10, 10));
+            box.setSpacing(20);
+
+            Text hiscoreTitle = new Text("Hiscores");
+            hiscoreTitle.toFront();
+            box.getChildren().add(hiscoreTitle);
+
+            // load scores from file and add to box
+            String filename = "hiscore.txt";
+            File file = new File(filename);
+            ArrayList<String> scoreArray = new ArrayList<String>();
+            try {
+                Scanner scanner = new Scanner(file);
+                while(scanner.hasNextLine()) {
+//                    System.out.println(scanner.nextLine());
+                    scoreArray.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            ArrayList<ArrayList<String>> viewScoreArray = new ArrayList<ArrayList<String>>();
+            // sort array by score
+            for(String line : scoreArray) {
+                int space = line.indexOf(" ");
+                String name = line.substring(0, space);
+                String score = line.substring(space+1, line.length());
+
+                // array of name and score
+                ArrayList<String> lineArray = new ArrayList<String>();
+                lineArray.add(name);
+                lineArray.add(score);
+
+                // add this array to the score array
+                viewScoreArray.add(lineArray);
+            }
+            // sort it so the lower scores are first (because they're better)
+            Collections.sort(viewScoreArray, new Comparator<ArrayList<String>>() {
+                @Override
+                public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+                    return o1.get(1).compareTo(o2.get(1));
+                }
+            });
+            System.out.println(viewScoreArray);
+
+
+            Button back = new Button("Back");
+            back.setOnAction(event1 -> {
+                GameMode gameMode = new GameMode(primaryStage);
+            });
+            box.getChildren().add(back);
+
+            Scene hiscoreScene = new Scene(hiscoreGroup);
+            primaryStage.setScene(hiscoreScene);
+        });
+
         Button quit = new Button("Quit");
         list.add(quit);
         quit.setOnMouseClicked(event -> {
-            primaryStage.close();
+            System.exit(0);
         });
 
         // Creating a scene object
