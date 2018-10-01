@@ -116,18 +116,21 @@ public class GameMode {
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.EASY);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                 }
                 else if(selectedDifficulty.getText() == "Medium") {
                     int boardSize = 12;
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.MEDIUM);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                 }
                 else if(selectedDifficulty.getText() == "Hard") {
                     int boardSize = 16;
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.HARD);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                 }
 
                 Scene game = new Scene(modes);
@@ -139,6 +142,7 @@ public class GameMode {
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.EASY);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                     Scene game = new Scene(modes, 512, 550);
                     primaryStage.setScene(game);
                 }
@@ -147,6 +151,7 @@ public class GameMode {
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                     Scene game = new Scene(modes, 700, 764);
                     primaryStage.setScene(game);
                 }
@@ -155,12 +160,10 @@ public class GameMode {
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.HARD);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage);
                     GameController gameController = new GameController(model, view);
+                    ScoreView scoreView = new ScoreView(newList);
                     Scene game = new Scene(modes, 900, 950);
                     primaryStage.setScene(game);
                 }
-
-
-
             }
 
 

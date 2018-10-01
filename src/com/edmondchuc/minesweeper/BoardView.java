@@ -62,6 +62,7 @@ public class BoardView {
         list.add(startGame);
         startGame.setOnMouseClicked(e -> {
             GameMode gameMode = new GameMode(primaryStage);
+            this.gameOver = true; // used to stop the game score timer when going to the main menu.
         });
 
     }
