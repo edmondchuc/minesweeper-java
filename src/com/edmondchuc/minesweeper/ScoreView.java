@@ -24,4 +24,8 @@ public class ScoreView {
         textScore.setX(120);
         textScore.setY(100);
     }
+
+    public void delete() {
+        this.textScore.setText("");
+    }
 }

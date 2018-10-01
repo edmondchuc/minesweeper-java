@@ -42,7 +42,12 @@ public class BoardView {
 
     ScoreController scoreController;
 
+    // observable list
+    ObservableList list;
+
     public BoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
+        this.list = list;
+
         this.scoreController = scoreController;
         this.gameOver = false;
         this.win = false;
@@ -67,7 +72,8 @@ public class BoardView {
         list.add(startGame);
         startGame.setOnMouseClicked(e -> {
             GameMode gameMode = new GameMode(primaryStage);
-            this.gameOver = true; // used to stop the game score timer when going to the main menu.
+            scoreController.setRunning(false);
+//            this.gameOver = true; // used to stop the game score timer when going to the main menu.
         });
 
     }
@@ -102,59 +108,109 @@ public class BoardView {
             }
         }
 
+
+    }
+
+    public void checkWin(BoardModel model) {
         // if game lose, show popup to notify user
         if(model.isGameOver()) {
-            this.gameOver = true;
-            if(this.gameOver) {
-                Stage dialog = new Stage();
-                dialog.initOwner(primaryStage);
-                dialog.initModality(Modality.WINDOW_MODAL);
-                dialog.setAlwaysOnTop(true);
-                VBox dialogVbox = new VBox(20);
-                dialogVbox.setPadding(new Insets(10, 10, 10, 10));
-                dialogVbox.setSpacing(20);
-                dialogVbox.getChildren().add(new Text("You have clicked on a mine! Game over!"));
-                Scene dialogScene = new Scene(dialogVbox);
-                dialog.setScene(dialogScene);
-                dialog.showAndWait();
-            }
+            scoreController.setRunning(false);
+
+            Stage dialog = new Stage();
+            dialog.initOwner(primaryStage);
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.setAlwaysOnTop(true);
+            VBox dialogVbox = new VBox(20);
+            dialogVbox.setPadding(new Insets(10, 10, 10, 10));
+            dialogVbox.setSpacing(20);
+            dialogVbox.getChildren().add(new Text("You have clicked on a mine! Game over!"));
+
+            addRestartButton(list, dialogVbox, dialog);
+
+            Scene dialogScene = new Scene(dialogVbox);
+            dialog.setScene(dialogScene);
+            dialog.showAndWait();
         }
 
-        if(model.isWin()) {
-            this.win = true;
-            if(this.win) {
-                Stage dialog = new Stage();
-                dialog.initOwner(primaryStage);
-                dialog.initModality(Modality.WINDOW_MODAL);
-                dialog.setAlwaysOnTop(true);
-                VBox dialogVbox = new VBox(20);
-                dialogVbox.setPadding(new Insets(10, 10, 10, 10));
-                dialogVbox.setSpacing(20);
+        else if(model.isWin()) {
+            scoreController.setRunning(false);
 
-                // score text
-                dialogVbox.getChildren().add(new Text("You win!"));
-                int score = scoreController.getScore();
-                dialogVbox.getChildren().add(new Text("Score: " + score));
+            Stage dialog = new Stage();
+            dialog.initOwner(primaryStage);
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.setAlwaysOnTop(true);
+            VBox dialogVbox = new VBox(20);
+            dialogVbox.setPadding(new Insets(10, 10, 10, 10));
+            dialogVbox.setSpacing(20);
 
-                // input field for name
-                TextField textFieldName = new TextField("name");
-                dialogVbox.getChildren().add(textFieldName);
+            // score text
+            dialogVbox.getChildren().add(new Text("You win!"));
+            int score = scoreController.getScore();
+            dialogVbox.getChildren().add(new Text("Score: " + score));
 
-                // button
-                Button buttonSaveScore = new Button("Save score");
-                dialogVbox.getChildren().add(buttonSaveScore);
-                buttonSaveScore.setOnMouseClicked(event -> {
-                    if(textFieldName.getCharacters().length() > 16) {
-                        System.out.println("Too many characters! 10 max.");
-                    } else {
-                        System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);
-                    }
-                });
+            // input field for name
+            TextField textFieldName = new TextField("name");
+            dialogVbox.getChildren().add(textFieldName);
 
-                Scene dialogScene = new Scene(dialogVbox);
-                dialog.setScene(dialogScene);
-                dialog.showAndWait();
-            }
+            // button save score
+            Button buttonSaveScore = new Button("Save score");
+            dialogVbox.getChildren().add(buttonSaveScore);
+            buttonSaveScore.setOnMouseClicked(event -> {
+                if(textFieldName.getCharacters().length() > 16) {
+                    System.out.println("Too many characters! 10 max.");
+                } else {
+                    System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);
+                    buttonSaveScore.setVisible(false);
+                }
+            });
+
+            addRestartButton(list, dialogVbox, dialog);
+
+            // display
+            Scene dialogScene = new Scene(dialogVbox);
+            dialog.setScene(dialogScene);
+            dialog.showAndWait();
         }
+    }
+
+    private void addRestartButton(ObservableList list, VBox dialogVbox, Stage dialog) {
+        // button restart game with current settings
+        Button buttonRestart = new Button("Restart");
+        dialogVbox.getChildren().add(buttonRestart);
+        buttonRestart.setOnMouseClicked(event -> {
+            System.out.println("Restarting game");
+
+            if(GameMode.currentGameMode == GameMode.CLASSIC && GameMode.currentDifficulty == GameMode.EASY) {
+                int boardSize = 8;
+                this.list.clear();
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.EASY);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                ClassicBoardView view = new ClassicBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
+            } else if(GameMode.currentGameMode == GameMode.CLASSIC && GameMode.currentDifficulty == GameMode.MEDIUM) {
+                int boardSize = 12;
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.MEDIUM);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                ClassicBoardView view = new ClassicBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
+            } else if(GameMode.currentGameMode == GameMode.CLASSIC && GameMode.currentDifficulty == GameMode.HARD) {
+                int boardSize = 16;
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.HARD);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                ClassicBoardView view = new ClassicBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
+            } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.EASY) {
+                int boardSize = 8;
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
+            }
+            dialog.close();
+        });
     }
 }

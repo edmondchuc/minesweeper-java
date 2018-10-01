@@ -28,9 +28,13 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Set;
 
 
 public class Main extends Application {
+
+
+
     /**
      * Add
      * @param x xx
@@ -130,4 +134,8 @@ public class Main extends Application {
     }
 
 
+    @Override
+    public void stop() {
+        System.out.println("User closed the application.");
+    }
 }

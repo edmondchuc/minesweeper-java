@@ -15,14 +15,17 @@ public class BoardModel {
     int flagCount;
 
     public BoardModel(int boardSize, int gameMode, int difficulty) {
+        // set the global difficulty and game mode
+        GameMode.currentGameMode = gameMode;
+        GameMode.currentDifficulty = difficulty;
 
         int n = boardSize*boardSize;
         cells = new CellContext[n];
 
         // set the number of bombs to have
         if(difficulty == GameMode.EASY) { bombCount = 2; }
-        else if(difficulty == GameMode.MEDIUM) { bombCount = 15; }
-        else if(difficulty == GameMode.HARD) { bombCount = 20; }
+        else if(difficulty == GameMode.MEDIUM) { bombCount = 20; }
+        else if(difficulty == GameMode.HARD) { bombCount = 2; }
         else { throw new java.lang.Error("Invalid game difficulty"); }
 
         // set the revealedCount to check if the win condition has been met

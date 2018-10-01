@@ -20,6 +20,9 @@ public class GameMode {
     static int HEX = 4;
     static int COLOR = 5;
 
+    static int currentGameMode;
+    static int currentDifficulty;
+
 
     public GameMode(Stage primaryStage) {
         VBox root = new VBox();
@@ -114,24 +117,24 @@ public class GameMode {
                 if(selectedDifficulty.getText() == "Easy") {
                     int boardSize = 8;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.EASY);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                 }
                 else if(selectedDifficulty.getText() == "Medium") {
                     int boardSize = 12;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.MEDIUM);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                 }
                 else if(selectedDifficulty.getText() == "Hard") {
                     int boardSize = 16;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.CLASSIC, GameMode.HARD);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     ClassicBoardView view = new ClassicBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                 }
@@ -143,8 +146,8 @@ public class GameMode {
                 if(selectedDifficulty.getText() == "Easy") {
                     int boardSize = 8;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.EASY);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                     Scene game = new Scene(modes, 512, 550);
@@ -153,8 +156,8 @@ public class GameMode {
                 else if(selectedDifficulty.getText() == "Medium") {
                     int boardSize = 12;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                     Scene game = new Scene(modes, 700, 764);
@@ -163,8 +166,8 @@ public class GameMode {
                 else if(selectedDifficulty.getText() == "Hard") {
                     int boardSize = 16;
                     ScoreView scoreView = new ScoreView(newList);
-                    ScoreController scoreController = new ScoreController(scoreView);
                     BoardModel model = new BoardModel(boardSize, GameMode.HEX, GameMode.HARD);
+                    ScoreController scoreController = new ScoreController(scoreView, model);
                     HexBoardView view = new HexBoardView(newList, boardSize, primaryStage, scoreController);
                     GameController gameController = new GameController(model, view);
                     Scene game = new Scene(modes, 900, 950);
@@ -174,6 +177,12 @@ public class GameMode {
 
         });
         list.add(startGame);
+
+        Button quit = new Button("Quit");
+        list.add(quit);
+        quit.setOnMouseClicked(event -> {
+            primaryStage.close();
+        });
 
         // Creating a scene object
         Scene scene = new Scene(root);

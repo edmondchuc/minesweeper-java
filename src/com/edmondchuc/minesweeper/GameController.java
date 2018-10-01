@@ -29,6 +29,7 @@ public class GameController {
     public void onMouseLeftClicked(int i) {
         model.onMouseLeftClicked(i);
         view.setView(model);
+        view.checkWin(model);
     }
 
     public void onMouseRightClicked(int i) {
