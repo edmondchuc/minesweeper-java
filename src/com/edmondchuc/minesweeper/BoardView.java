@@ -178,7 +178,7 @@ public class BoardView {
                 } else {
                     System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);
                     response.setText("Score Saved!");
-                    response.setFill(Color.LIGHTGREEN);
+                    response.setFill(Color.GREEN);
                     buttonSaveScore.setVisible(false);
 
                     // save the score to file
@@ -200,7 +200,7 @@ public class BoardView {
             addRestartButton(list, dialogVbox, dialog);
 
             // display
-            Scene dialogScene = new Scene(dialogVbox);
+            Scene dialogScene = new Scene(dialogVbox, 200, 250);
             dialog.setScene(dialogScene);
             dialog.showAndWait();
         }
