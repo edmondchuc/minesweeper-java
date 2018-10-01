@@ -239,7 +239,10 @@ public class GameMode {
             Collections.sort(viewScoreArray, new Comparator<ArrayList<String>>() {
                 @Override
                 public int compare(ArrayList<String> o1, ArrayList<String> o2) {
-                    return o1.get(1).compareTo(o2.get(1));
+//                    int o1Index = Integer.parseInt(o1.get(1));
+//                    int o2Index = Integer.parseInt(o2.get(1));
+//                    return o1.get(1).compareTo(o2.get(1));
+                    return Integer.valueOf(o1.get(1)).compareTo(Integer.valueOf(o2.get(1)));
                 }
             });
             String view = "";
