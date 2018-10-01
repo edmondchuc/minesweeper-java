@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 
 public class ClassicBoardView extends BoardView {
 
-    public ClassicBoardView(ObservableList list, int boardSize, Stage primaryStage) {
-        super(list, boardSize, primaryStage);
+    public ClassicBoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
+        super(list, boardSize, primaryStage, scoreController);
 
         double length = 40;//sizeOfCell/boardSize;
         int col = 0;

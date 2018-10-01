@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 
 public class HexBoardView extends BoardView {
 
-    public HexBoardView(ObservableList list, int boardSize, Stage primaryStage) {
-        super(list, boardSize, primaryStage);
+    public HexBoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
+        super(list, boardSize, primaryStage, scoreController);
 
         double length = 50;//sizeOfCell/boardSize;
         int col = 0;

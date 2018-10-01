@@ -1,8 +1,10 @@
 package com.edmondchuc.minesweeper;
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -38,7 +40,10 @@ public class BoardView {
 
     Text textFlagCount;
 
-    public BoardView(ObservableList list, int boardSize, Stage primaryStage) {
+    ScoreController scoreController;
+
+    public BoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
+        this.scoreController = scoreController;
         this.gameOver = false;
         this.win = false;
 
@@ -106,6 +111,8 @@ public class BoardView {
                 dialog.initModality(Modality.WINDOW_MODAL);
                 dialog.setAlwaysOnTop(true);
                 VBox dialogVbox = new VBox(20);
+                dialogVbox.setPadding(new Insets(10, 10, 10, 10));
+                dialogVbox.setSpacing(20);
                 dialogVbox.getChildren().add(new Text("You have clicked on a mine! Game over!"));
                 Scene dialogScene = new Scene(dialogVbox);
                 dialog.setScene(dialogScene);
@@ -121,7 +128,29 @@ public class BoardView {
                 dialog.initModality(Modality.WINDOW_MODAL);
                 dialog.setAlwaysOnTop(true);
                 VBox dialogVbox = new VBox(20);
+                dialogVbox.setPadding(new Insets(10, 10, 10, 10));
+                dialogVbox.setSpacing(20);
+
+                // score text
                 dialogVbox.getChildren().add(new Text("You win!"));
+                int score = scoreController.getScore();
+                dialogVbox.getChildren().add(new Text("Score: " + score));
+
+                // input field for name
+                TextField textFieldName = new TextField("name");
+                dialogVbox.getChildren().add(textFieldName);
+
+                // button
+                Button buttonSaveScore = new Button("Save score");
+                dialogVbox.getChildren().add(buttonSaveScore);
+                buttonSaveScore.setOnMouseClicked(event -> {
+                    if(textFieldName.getCharacters().length() > 16) {
+                        System.out.println("Too many characters! 10 max.");
+                    } else {
+                        System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);
+                    }
+                });
+
                 Scene dialogScene = new Scene(dialogVbox);
                 dialog.setScene(dialogScene);
                 dialog.showAndWait();
