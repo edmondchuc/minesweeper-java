@@ -170,10 +170,11 @@ public class BoardView {
             Button buttonSaveScore = new Button("Save score");
             dialogVbox.getChildren().add(buttonSaveScore);
             buttonSaveScore.setOnMouseClicked(event -> {
-                if(textFieldName.getCharacters().length() > 16) {
+                int maxChar = 16;
+                if(textFieldName.getCharacters().length() > maxChar) {
                     //TODO: show some prompt giving the user an indication that it's too long
-                    System.out.println("Too many characters! 10 max.");
-                    response.setText("Too many characters! 10 max.");
+                    System.out.println("Too many characters! " + maxChar + " max.");
+                    response.setText("Too many characters! " + maxChar + " max.");
                     response.setFill(Color.RED);
                 } else {
                     System.out.println("Saving score of player " + textFieldName.getText() + " with a score of " + score);

@@ -202,6 +202,7 @@ public class GameMode {
             box.setSpacing(20);
 
             Text hiscoreTitle = new Text("Hiscores");
+            hiscoreTitle.setStyle("-fx-font: 24 arial;");
             hiscoreTitle.toFront();
             box.getChildren().add(hiscoreTitle);
 
@@ -241,8 +242,19 @@ public class GameMode {
                     return o1.get(1).compareTo(o2.get(1));
                 }
             });
-            System.out.println(viewScoreArray);
+            String view = "";
+            for(ArrayList<String> line : viewScoreArray) {
+                view = view.concat(line.get(0) + ": " + line.get(1) + "\n");
+//                String o1 = line.get(0) + ": ";
+//                String o2 = line.get(1) + "\n";
+//                int width = 25;
+//                System.out.println("width:" + Integer.toString(width - o1.length() + 1));
+//                view = view.concat(String.format("%-1s %" + Integer.toString(width - o1.length() + 1) + "s", o1, o2));
+            }
+            System.out.println(view);
 
+            Text viewText = new Text(view);
+            box.getChildren().add(viewText);
 
             Button back = new Button("Back");
             back.setOnAction(event1 -> {

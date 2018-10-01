@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Changed from images for cells to Rectangle JavaFX class." />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Changed from images for cells to Rectangle JavaFX class.">
+      <change beforePath="$PROJECT_DIR$/hiscore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hiscore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,13 +72,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="21672" />
+          <entry key="java" value="22436" />
           <entry key="txt" value="92" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21672" />
+          <entry key="JAVA" value="22436" />
           <entry key="PLAIN_TEXT" value="92" />
         </counts>
       </usages-collector>
@@ -96,11 +100,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+            <state relative-caret-position="427">
+              <caret line="195" column="44" lean-forward="true" selection-start-line="195" selection-start-column="44" selection-end-line="195" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,11 +197,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="239" column="80" lean-forward="true" selection-start-line="239" selection-start-column="80" selection-end-line="239" selection-end-column="80" />
+            <state relative-caret-position="351">
+              <caret line="232" column="37" lean-forward="true" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="37" />
               <folding>
                 <element signature="e#9699#9707#0" expanded="true" />
                 <element signature="e#10136#10155#0" expanded="true" />
@@ -281,6 +285,8 @@
       <find>Timer</find>
       <find>Score</find>
       <find>padd</find>
+      <find>10</find>
+      <find>hiscorestitle</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -315,8 +321,8 @@
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" />
       </list>
     </option>
   </component>
@@ -427,7 +433,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="SearchEverywhereHistoryKey" value="error&#9;PSI&#9;JAVA://java.lang.Error" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538381863961" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538387427574" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -886,18 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="239" column="80" lean-forward="true" selection-start-line="239" selection-start-column="80" selection-end-line="239" selection-end-column="80" />
-          <folding>
-            <element signature="e#9699#9707#0" expanded="true" />
-            <element signature="e#10136#10155#0" expanded="true" />
-            <element signature="e#10451#10459#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3054">
@@ -929,10 +923,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+        <state relative-caret-position="427">
+          <caret line="195" column="44" lean-forward="true" selection-start-line="195" selection-start-column="44" selection-end-line="195" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="232" column="37" lean-forward="true" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="37" />
+          <folding>
+            <element signature="e#9699#9707#0" expanded="true" />
+            <element signature="e#10136#10155#0" expanded="true" />
+            <element signature="e#10451#10459#0" expanded="true" />
           </folding>
         </state>
       </provider>
