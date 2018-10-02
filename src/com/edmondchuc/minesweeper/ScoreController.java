@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The controller of the score object. It uses a timer.
+ */
 public class ScoreController {
 
     // game timer for user's score

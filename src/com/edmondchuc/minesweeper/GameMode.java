@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Manages the main menu
+ */
 public class GameMode {
 
     static int EASY = 0;
@@ -32,6 +35,10 @@ public class GameMode {
     static int currentDifficulty;
 
 
+    /**
+     * Constructor
+     * @param primaryStage JavaFX Stage object
+     */
     public GameMode(Stage primaryStage) {
         VBox root = new VBox();
         root.setPadding(new Insets(10, 10, 10, 10));

@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Changed from images for cells to Rectangle JavaFX class.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hiscore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hiscore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,24 +83,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="22695" />
+          <entry key="java" value="25297" />
           <entry key="txt" value="92" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="22695" />
+          <entry key="JAVA" value="25297" />
           <entry key="PLAIN_TEXT" value="92" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="57" />
+          <entry key="java" value="75" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="57" />
+          <entry key="JAVA" value="75" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -100,23 +111,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="253" column="34" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+            <state relative-caret-position="-474">
+              <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,23 +124,62 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="120" column="9" lean-forward="true" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#715#716#0" expanded="true" />
-                <element signature="e#759#760#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="523">
+              <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#511#1131#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+                <element signature="e#1213#1214#0" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1295#1296#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="810">
+              <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -149,17 +187,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="585">
+              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="510">
+              <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,33 +206,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java">
+        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3054">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+            <state relative-caret-position="126">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6082#6083#0" expanded="true" />
-                <element signature="e#6118#6119#0" expanded="true" />
-                <element signature="e#6570#6571#0" expanded="true" />
-                <element signature="e#6596#6597#0" expanded="true" />
-                <element signature="e#6631#6632#0" expanded="true" />
-                <element signature="e#6662#6663#0" expanded="true" />
-                <element signature="e#6695#6696#0" expanded="true" />
-                <element signature="e#6727#6728#0" expanded="true" />
-                <element signature="e#6768#6769#0" expanded="true" />
-                <element signature="e#6813#6814#0" expanded="true" />
-                <element signature="e#6853#6854#0" expanded="true" />
-                <element signature="e#6897#6898#0" expanded="true" />
+                <element signature="e#871#872#0" expanded="true" />
+                <element signature="e#915#916#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,26 +222,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2985">
-              <caret line="244" column="92" selection-start-line="244" selection-start-column="92" selection-end-line="244" selection-end-column="92" />
-              <folding>
-                <element signature="e#9699#9707#0" expanded="true" />
-                <element signature="e#10136#10155#0" expanded="true" />
-                <element signature="e#10451#10459#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellHover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-              <folding>
-                <element signature="e#1945#1946#0" expanded="true" />
-                <element signature="e#2000#2001#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-3384">
+              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -290,23 +291,23 @@
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/Hover.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexView.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicView.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellRevealedEmpty.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellRevealedBomb.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellFlagged.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellHover.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java" />
         <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java" />
+        <option value="$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java" />
       </list>
     </option>
   </component>
@@ -417,7 +418,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="SearchEverywhereHistoryKey" value="error&#9;PSI&#9;JAVA://java.lang.Error" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538448791060" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538484000105" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -594,14 +595,14 @@
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.48104957" visible="true" weight="0.2924298" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4818376" visible="true" weight="0.2924298" />
       <window_info id="Image Layers" order="4" />
-      <window_info id="Structure" order="5" sideWeight="0.51895046" side_tool="true" visible="true" weight="0.2924298" />
+      <window_info id="Structure" order="5" sideWeight="0.51816237" side_tool="true" visible="true" weight="0.2924298" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32946146" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.26709402" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.26709402" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3974359" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -723,17 +724,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexView.java">
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="-1104">
+          <caret line="195" column="44" selection-start-line="195" selection-start-column="44" selection-end-line="195" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6495#6496#0" expanded="true" />
+            <element signature="e#6531#6532#0" expanded="true" />
+            <element signature="e#7264#7265#0" expanded="true" />
+            <element signature="e#7290#7291#0" expanded="true" />
+            <element signature="e#7456#7457#0" expanded="true" />
+            <element signature="e#7487#7488#0" expanded="true" />
+            <element signature="e#7679#7680#0" expanded="true" />
+            <element signature="e#7712#7713#0" expanded="true" />
+            <element signature="e#7593#7594#0" expanded="true" />
+            <element signature="e#7638#7639#0" expanded="true" />
+            <element signature="e#7678#7679#0" expanded="true" />
+            <element signature="e#7722#7723#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellRevealedEmpty.java">
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="-338">
+          <caret line="235" column="33" selection-start-line="235" selection-start-column="33" selection-end-line="235" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
+          <folding>
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#1477#1478#0" expanded="true" />
+            <element signature="e#1510#1511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellFlagged.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellHover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#1945#1946#0" expanded="true" />
+            <element signature="e#2000#2001#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -744,13 +800,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellFlagged.java">
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellRevealedEmpty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="465">
+          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="107" column="55" selection-start-line="107" selection-start-column="55" selection-end-line="107" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
           <folding>
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,35 +836,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+        <state relative-caret-position="126">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        <state relative-caret-position="-3384">
+          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-474">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#499#1017#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1041#1042#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
-            <element signature="e#1102#1103#0" expanded="true" />
-            <element signature="e#1137#1138#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
+        <state relative-caret-position="523">
           <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -806,120 +883,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3054">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6082#6083#0" expanded="true" />
-            <element signature="e#6118#6119#0" expanded="true" />
-            <element signature="e#6570#6571#0" expanded="true" />
-            <element signature="e#6596#6597#0" expanded="true" />
-            <element signature="e#6631#6632#0" expanded="true" />
-            <element signature="e#6662#6663#0" expanded="true" />
-            <element signature="e#6695#6696#0" expanded="true" />
-            <element signature="e#6727#6728#0" expanded="true" />
-            <element signature="e#6768#6769#0" expanded="true" />
-            <element signature="e#6813#6814#0" expanded="true" />
-            <element signature="e#6853#6854#0" expanded="true" />
-            <element signature="e#6897#6898#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ClassicBoardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="510">
+          <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/HexBoardView.java">
+    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/ScoreController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+        <state relative-caret-position="156">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#511#1131#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#1213#1214#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1295#1296#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellHover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#1945#1946#0" expanded="true" />
-            <element signature="e#2000#2001#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="120" column="9" lean-forward="true" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
-          <folding>
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="585">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/CellDefault.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/GameMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2985">
-          <caret line="244" column="92" selection-start-line="244" selection-start-column="92" selection-end-line="244" selection-end-column="92" />
-          <folding>
-            <element signature="e#9699#9707#0" expanded="true" />
-            <element signature="e#10136#10155#0" expanded="true" />
-            <element signature="e#10451#10459#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/edmondchuc/minesweeper/BoardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="253" column="34" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="810">
+          <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
         </state>
       </provider>
     </entry>

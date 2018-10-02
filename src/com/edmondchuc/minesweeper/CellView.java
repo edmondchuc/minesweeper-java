@@ -8,10 +8,21 @@ import javafx.scene.text.Text;
 
 import java.io.File;
 
+/**
+ * Manages the cell view
+ */
 public class CellView extends Polygon {
     protected int i;
     protected Text text;
 
+    /**
+     * Constructor
+     * @param i The cell identifier
+     * @param col column
+     * @param row row
+     * @param length length
+     * @param gameMode the game mode
+     */
     public CellView(int i, int col, int row, double length, int gameMode) {
         this.i = i;
 //        imageView = new ImageView(cellDefault);
@@ -38,10 +49,18 @@ public class CellView extends Polygon {
 
     }
 
+    /**
+     * Get the text object
+     * @return object
+     */
     public Text getText() {
         return text;
     }
 
+    /**
+     * Set the bomb text
+     * @param bombs number of bombs
+     */
     public void setBombText(int bombs) {
         switch(bombs) {
             case 0:
@@ -84,6 +103,10 @@ public class CellView extends Polygon {
         }
     }
 
+    /**
+     * Set the callbacks for this object's events
+     * @param gameController The game controller object
+     */
     public void setEvents(GameController gameController) {
         this.setOnMouseEntered(event -> {
             if(!BoardView.gameOver && !BoardView.win) {

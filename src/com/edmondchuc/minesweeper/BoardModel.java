@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Manages the board data of the game.
+ */
 public class BoardModel {
     CellContext[] cells;
     boolean gameOver = false;
@@ -14,6 +17,12 @@ public class BoardModel {
     final int winCount;
     int flagCount;
 
+    /**
+     * Constructor
+     * @param boardSize The board size.
+     * @param gameMode The game mode.
+     * @param difficulty The difficulty.
+     */
     public BoardModel(int boardSize, int gameMode, int difficulty) {
         // set the global difficulty and game mode
         GameMode.currentGameMode = gameMode;
@@ -182,10 +191,17 @@ public class BoardModel {
 
     }
 
+    /**
+     * Get the number of cells that have been revealed.
+     * @return The number of cells revealed.
+     */
     public int getRevealedCount() {
         return revealedCount;
     }
 
+    /**
+     * Set the game state to be "game over".
+     */
     private void setGameOver() {
         gameOver = true;
 
@@ -202,26 +218,50 @@ public class BoardModel {
         }
     }
 
+    /**
+     * Get the win state.
+     * @return The win state.
+     */
     public boolean isWin() {
         return win;
     }
 
+    /**
+     * Get the game over state.
+     * @return The game over state.
+     */
     public boolean isGameOver() {
         return gameOver;
     }
 
+    /**
+     * Get the number of flags available.
+     * @return The flag count.
+     */
     public int getFlagCount() {
         return flagCount;
     }
 
+    /**
+     * Mouse hover action.
+     * @param i The cell identifier.
+     */
     public void onMouseEntered(int i) {
         cells[i].setStateHoverEnter();
     }
 
+    /**
+     * Mouse exited action..
+     * @param i The cell identifier.
+     */
     public void onMouseExited(int i) {
         cells[i].setStateHoverExit();
     }
 
+    /**
+     * Mouse left clicked action.
+     * @param i The cell identifier.
+     */
     public void onMouseLeftClicked(int i) {
         cells[i].setStateLeftClick();
         if(cells[i].isBomb()) {
@@ -240,6 +280,10 @@ public class BoardModel {
         }
     }
 
+    /**
+     * Mouse right clicked action.
+     * @param i The cell identifier.
+     */
     public void onMouseRightClicked(int i) {
         if(flagCount == 0 && cells[i].getState().getClass() == CellFlagged.class || flagCount > 0) {
             cells[i].setStateRightClick();

@@ -14,6 +14,10 @@ public class CellContext {
     private List<CellContext> neighbours;
     private int neighboursIsBomb = 0;
 
+    /**
+     * Constructor
+     * @param isBomb The boolean to determine if this cell is a bomb or not
+     */
     public CellContext(boolean isBomb) {
         // cell creation defaults to its original state.
         this.cellState = new CellDefault();
@@ -21,14 +25,25 @@ public class CellContext {
         this.isBomb = isBomb;
     }
 
+    /**
+     * Get the number of neighours who are bombs
+     * @return The total count of neighbours that are bombs
+     */
     public int getNumOfNeighboursIsBomb() {
         return neighboursIsBomb;
     }
 
+    /**
+     * Set the neighbours of this cell.
+     * @param neighbours The neighbours list
+     */
     public void setNeighbours(List neighbours) {
         this.neighbours = neighbours;
     }
 
+    /**
+     * Set the bomb count of neighbours
+     */
     public void setBombNeighbours() {
         // find the number of neighbours who are bombs
         if(!this.isBomb) {
@@ -40,6 +55,10 @@ public class CellContext {
         }
     }
 
+    /**
+     * Get the neighbours list
+     * @return
+     */
     public List<CellContext> getNeighbours() {
         return neighbours;
     }
@@ -85,6 +104,9 @@ public class CellContext {
         this.cellState.setStateHoverEnter(this);
     }
 
+    /**
+     * Set the state to cell flagged
+     */
     public void setStateFlagged() { this.cellState.setStateRightClick(this); }
 
     /**
@@ -97,12 +119,21 @@ public class CellContext {
         this.cellState.setStateHoverExit(this);
     }
 
+    /**
+     * Set the state to left clicked
+     */
     public void setStateLeftClick() {
         this.cellState.setStateLeftClick(this);
     }
 
+    /**
+     * Set the state to right clicked
+     */
     public void setStateRightClick() { this.cellState.setStateRightClick(this); }
 
+    /**
+     * Reveal the neighbours
+     */
     public void revealNeighbours() {
         for (CellContext neighbour : neighbours) {
             if(neighbour.getState().getClass() != CellRevealedEmpty.class && neighbour.getState().getClass() != CellRevealedBomb.class && neighbour.getState().getClass() != CellFlagged.class) {

@@ -4,8 +4,18 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Manages the board view for the hex game mode
+ */
 public class HexBoardView extends BoardView {
 
+    /**
+     * Constructor
+     * @param list Observable list
+     * @param boardSize the board size
+     * @param primaryStage The JavaFX Stage object
+     * @param scoreController The score controller object
+     */
     public HexBoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
         super(list, boardSize, primaryStage, scoreController);
 

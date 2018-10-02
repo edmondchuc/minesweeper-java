@@ -22,21 +22,37 @@ public class CellDefault implements CellState {
 
     }
 
+    /**
+     * Inform the Cell that it has been left clicked and set its state based on its current state and properties.
+     * @param cellContext The CellContext object wrapper for a finite state machine.
+     */
     @Override
     public void setStateLeftClick(CellContext cellContext) {
 
     }
 
+    /**
+     * Set the state to RevealedEmpty.
+     * @param cellContext The CellContext object wrapper for a finite state machine.
+     */
     @Override
     public void setStateRevealedEmpty(CellContext cellContext) {
 
     }
 
+    /**
+     * Set the state to RevealedBomb
+     * @param cellContext The CellContext object wrapper for a finite state machine.
+     */
     @Override
     public void setStateRevealedBomb(CellContext cellContext) {
 
     }
 
+    /**
+     * Set the state to right clicked
+     * @param cellContext The CellContext object wrapper for a finite state machine.
+     */
     @Override
     public void setStateRightClick(CellContext cellContext) {
 

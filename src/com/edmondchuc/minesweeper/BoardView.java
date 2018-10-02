@@ -20,6 +20,9 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
+/**
+ * Manages the view of the board. Super class.
+ */
 public class BoardView {
 
     Paint cellDefault = Color.LIGHTBLUE;
@@ -44,6 +47,13 @@ public class BoardView {
     // observable list
     ObservableList list;
 
+    /**
+     * Constructor
+     * @param list The Observable List
+     * @param boardSize The board size's length
+     * @param primaryStage The JavaFX Stage
+     * @param scoreController The score controller object
+     */
     public BoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
         this.list = list;
 
@@ -87,12 +97,20 @@ public class BoardView {
 
     }
 
+    /**
+     * Set the events of the object.
+     * @param gameController The game controller object
+     */
     public void setEvents(GameController gameController) {
         for(int i = 0; i < n; i++) {
             cells[i].setEvents(gameController);
         }
     }
 
+    /**
+     * Set the view
+     * @param model The board model object
+     */
     public void setView(BoardModel model) {
 
         // set the flag count
@@ -120,6 +138,10 @@ public class BoardView {
 
     }
 
+    /**
+     * Draw the win/game over view
+     * @param model The board model
+     */
     public void checkWin(BoardModel model) {
         // if game lose, show popup to notify user
         if(model.isGameOver()) {
@@ -207,6 +229,12 @@ public class BoardView {
         }
     }
 
+    /**
+     * Render the restart button
+     * @param list Observable list
+     * @param dialogVbox Dialogue box
+     * @param dialog The dialogue
+     */
     private void addRestartButton(ObservableList list, VBox dialogVbox, Stage dialog) {
         // button restart game with current settings
         Button buttonRestart = new Button("Restart");

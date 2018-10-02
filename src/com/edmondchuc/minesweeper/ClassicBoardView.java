@@ -4,8 +4,18 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Manages the Classic mode's board view
+ */
 public class ClassicBoardView extends BoardView {
 
+    /**
+     * Constructor
+     * @param list observable list
+     * @param boardSize size of board
+     * @param primaryStage JavaFX Stage
+     * @param scoreController The score controller object
+     */
     public ClassicBoardView(ObservableList list, int boardSize, Stage primaryStage, ScoreController scoreController) {
         super(list, boardSize, primaryStage, scoreController);
 

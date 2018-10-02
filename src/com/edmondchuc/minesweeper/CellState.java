@@ -35,5 +35,9 @@ public interface CellState {
      */
     public void setStateRevealedBomb(CellContext cellContext);
 
+    /**
+     * Set the state to right clicked
+     * @param cellContext The CellContext object wrapper for a finite state machine.
+     */
     public void setStateRightClick(CellContext cellContext);
 }
