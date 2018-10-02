@@ -243,6 +243,20 @@ public class BoardView {
                 ScoreController scoreController = new ScoreController(scoreView, modelNew);
                 HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
                 GameController gameController = new GameController(modelNew, view);
+            } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.MEDIUM) {
+                int boardSize = 12;
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
+            } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.MEDIUM) {
+                int boardSize = 16;
+                ScoreView scoreView = new ScoreView(list);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                ScoreController scoreController = new ScoreController(scoreView, modelNew);
+                HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
+                GameController gameController = new GameController(modelNew, view);
             }
             dialog.close();
         });
