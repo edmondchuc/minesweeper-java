@@ -148,6 +148,8 @@ public class BoardView {
             BoardView.gameOver = true;
             scoreController.setRunning(false);
 
+            textFlagCount.setText("");
+
             Stage dialog = new Stage();
             dialog.initOwner(primaryStage);
             dialog.initModality(Modality.WINDOW_MODAL);
@@ -167,6 +169,8 @@ public class BoardView {
         else if(model.isWin()) {
             BoardView.win = true;
             scoreController.setRunning(false);
+
+            textFlagCount.setText("");
 
             Stage dialog = new Stage();
             dialog.initOwner(primaryStage);
@@ -241,6 +245,8 @@ public class BoardView {
         dialogVbox.getChildren().add(buttonRestart);
         buttonRestart.setOnMouseClicked(event -> {
             System.out.println("Restarting game");
+            textFlagCount.setText("");
+            textFlagCount.setVisible(false);
 
             if(GameMode.currentGameMode == GameMode.CLASSIC && GameMode.currentDifficulty == GameMode.EASY) {
                 int boardSize = 8;
@@ -267,7 +273,7 @@ public class BoardView {
             } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.EASY) {
                 int boardSize = 8;
                 ScoreView scoreView = new ScoreView(list);
-                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.EASY);
                 ScoreController scoreController = new ScoreController(scoreView, modelNew);
                 HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
                 GameController gameController = new GameController(modelNew, view);
@@ -278,10 +284,10 @@ public class BoardView {
                 ScoreController scoreController = new ScoreController(scoreView, modelNew);
                 HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
                 GameController gameController = new GameController(modelNew, view);
-            } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.MEDIUM) {
+            } else if(GameMode.currentGameMode == GameMode.HEX && GameMode.currentDifficulty == GameMode.HARD) {
                 int boardSize = 16;
                 ScoreView scoreView = new ScoreView(list);
-                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.MEDIUM);
+                BoardModel modelNew = new BoardModel(boardSize, GameMode.HEX, GameMode.HARD);
                 ScoreController scoreController = new ScoreController(scoreView, modelNew);
                 HexBoardView view = new HexBoardView(list, boardSize, primaryStage, scoreController);
                 GameController gameController = new GameController(modelNew, view);

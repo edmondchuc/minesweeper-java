@@ -119,7 +119,7 @@ public class GameMode {
         startGame.setOnAction(value -> {
 
             RadioMenuItem selectedGameMode = (RadioMenuItem) toggleGroupGameMode.getSelectedToggle();
-            System.out.println("Starting game with difficulty: " + selectedGameMode.getText());
+            System.out.println("Starting game with game mode: " + selectedGameMode.getText());
 
             RadioMenuItem selectedDifficulty = (RadioMenuItem) toggleDifficultyMode.getSelectedToggle();
             System.out.println("Starting game with difficulty: " + selectedDifficulty.getText());

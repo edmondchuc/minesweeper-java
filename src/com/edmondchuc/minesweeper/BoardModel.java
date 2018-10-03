@@ -32,9 +32,9 @@ public class BoardModel {
         cells = new CellContext[n];
 
         // set the number of bombs to have
-        if(difficulty == GameMode.EASY) { bombCount = 2; }
-        else if(difficulty == GameMode.MEDIUM) { bombCount = 20; }
-        else if(difficulty == GameMode.HARD) { bombCount = 2; }
+        if(difficulty == GameMode.EASY) { bombCount = 10; }
+        else if(difficulty == GameMode.MEDIUM) { bombCount = 12; }
+        else if(difficulty == GameMode.HARD) { bombCount = 15; }
         else { throw new java.lang.Error("Invalid game difficulty"); }
 
         // set the revealedCount to check if the win condition has been met
